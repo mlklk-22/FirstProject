@@ -1,0 +1,67 @@
+﻿ @model IEnumerable<FirstProject.Models.Reservation>
+@{
+    Layout = "~/Views/Shared/_LayoutUserHF.cshtml";
+
+ }
+
+<br /><br /><br /><br /><br /><br /><br /><br />
+<form action="Search" method="post">
+               <label for="Place">PlaceName</label>
+               <input  type="text" class="form-control" name="Place" placeholder="Place" />
+                <label for="City">Address</label>
+               <input  type="text" class="form-control" name="City" placeholder="City" />
+              @*<select>
+                  <option></option>
+                  <option name="s">Sport</option>
+                  <option name="e">Education</option>
+                  <option name="w">Weddings</option>
+
+              </select>*@
+               
+               <br />
+               <button type="submit" class="btn btn-danger"> search</button>
+           </form>
+
+   <section id="features" class="features">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="main_features_area sections">
+                                <div class="head_title">
+                                    <h3>Hall reservation</h3>
+                                    <div class="separator"></div>
+                                </div>
+                                @foreach (var item in Model)
+                                {
+                                <div class="row">
+                                    <div class="main_features_content">
+
+                                        <div class="col-sm-6">
+                                                <div class="single_ft_s_item">
+                                                    <img src="@Url.Content("~/Images/" + @item.Image)" width="250" height="250"/> 
+                                                    </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="single_features_text"> 
+                                                <h4>@Html.DisplayFor(model => item.Place)</h4>
+                                                <p>@Html.DisplayFor(model => item.Description)</p>
+
+                                                <ul>
+                                                    <li><span>Price:</span> @Html.DisplayFor(model => item.Price)</li>
+                                                    <li><span>Time:</span> @Html.DisplayFor(model => item.Timefrom) TO @Html.DisplayFor(model => item.Timeto)</li>
+                                                    <li><span>Status:</span>@Html.DisplayFor(model => item.Status) </li>
+                                                </ul>
+                                                <a  href="~/Reservations/Details/@item.Hallnumber" class="btn">LAUNCH NOW</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <br /><br /><br /><br />
+                                <hr style="border-width:5px;" />
+                                }
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+

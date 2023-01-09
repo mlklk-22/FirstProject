@@ -1,0 +1,81 @@
+﻿@model FirstProject.Models.Contactu
+
+@{
+      Layout = "~/Views/Shared/_LayoutDashboard2.cshtml";;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Contactu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Visittitle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Visittitle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptionvisit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptionvisit)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptionmail)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptionmail)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Call)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Call)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptioncall)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptioncall)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Work)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Work)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptionwork)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptionwork)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Role.Rolename)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UsernameNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UsernameNavigation.Username)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Mailtitle">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

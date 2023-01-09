@@ -1,0 +1,42 @@
+﻿@model IEnumerable<FirstProject.Models.Reservation>
+@{
+    Layout = "~/Views/Shared/_LayoutUserHF.cshtml";
+    var user = ViewBag.UserName;
+}
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<h2>Are you sure to reserve the room ? </h2>
+
+<div class="row">
+    <div class="col-md-4" style="margin-left:550px">
+        
+          <a  asp-action="HomeUser" asp-controller="Homef" class="btn">YES</a>
+          @foreach (var item in Model.Where(x => x.Username == user))
+         {
+             <a  href="~/Visas/DisAgreement/@item.Hallnumber"  class="btn">No, I changed My Mind</a>
+         }
+          <br /><br /><br /><br /><br /><br /><br /><br /><br />
+       
+        
+    </div>
+</div>
+
+
+
+
+
+ @*<form asp-action="ReqRes">
+            <div class="form-group">
+                <input type="submit" value="Yes" class="btn btn-default" />
+            </div>
+        </form>*@
+@* <div class="form-group">
+                <label for="Exp" class="control-label"></label>
+                <input type="text" name="Exp" class="form-control" />
+                
+            </div>
+            <div class="form-group">
+                <label for="Thrnum" class="control-label"></label>
+                <input type="text" name="Thrnum" class="form-control" />
+                
+            </div>*@

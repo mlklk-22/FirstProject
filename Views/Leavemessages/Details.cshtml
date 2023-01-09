@@ -1,0 +1,55 @@
+﻿@model FirstProject.Models.Leavemessage
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Leavemessage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Firstname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lastname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Role.Rolename)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UsernameNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UsernameNavigation.Username)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Email">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

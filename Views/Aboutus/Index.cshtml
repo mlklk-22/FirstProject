@@ -1,0 +1,166 @@
+﻿@model IEnumerable<FirstProject.Models.Aboutu>
+
+@{
+      Layout = "~/Views/Shared/_LayoutDashboard2.cshtml";;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AboutUs Page</title>
+</head>
+<body>
+    <h3 style="color:rosybrown"> AboutUs Page</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptiontitle1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptiontitle2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptiontitle3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptiontitle4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titlechose1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptionchose1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titlechose2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptionchose2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titlechose3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptionchose3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titlechose4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptionchose4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titlechose5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptionchose5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Choseimage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsernameNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptiontitle1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptiontitle2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptiontitle3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptiontitle4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titlechose1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptionchose1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titlechose2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptionchose2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titlechose3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptionchose3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titlechose4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptionchose4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Titlechose5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptionchose5)
+            </td>
+            <td>
+             <img src="@Url.Content("~/Images/" + @item.Choseimage)" width="450" height="450"/> 
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role.Rolename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsernameNavigation.Username)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Titleimage">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Titleimage">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Titleimage">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+</body>
+</html>

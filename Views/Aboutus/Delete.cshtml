@@ -1,0 +1,156 @@
+﻿@model FirstProject.Models.Aboutu
+
+@{
+      Layout = "~/Views/Shared/_LayoutDashboard2.cshtml";;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Aboutu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptiontitle1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptiontitle1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptiontitle2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptiontitle2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title3)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title3)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptiontitle3)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptiontitle3)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Title4)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title4)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptiontitle4)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptiontitle4)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Titlechose1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titlechose1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptionchose1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptionchose1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Titlechose2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titlechose2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptionchose2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptionchose2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Titlechose3)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titlechose3)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptionchose3)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptionchose3)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Titlechose4)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titlechose4)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptionchose4)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptionchose4)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Titlechose5)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titlechose5)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptionchose5)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptionchose5)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Choseimage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Choseimage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Role.Rolename)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UsernameNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UsernameNavigation.Username)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Titleimage" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
+</body>
+</html>

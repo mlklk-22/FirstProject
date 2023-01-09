@@ -1,0 +1,145 @@
+﻿@model FirstProject.Models.Aboutu
+
+@{
+      Layout = "~/Views/Shared/_LayoutDashboard2.cshtml";;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>Aboutu</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title1" class="control-label"></label>
+                <input asp-for="Title1" class="form-control" />
+                <span asp-validation-for="Title1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptiontitle1" class="control-label"></label>
+                <input asp-for="Descriptiontitle1" class="form-control" />
+                <span asp-validation-for="Descriptiontitle1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title2" class="control-label"></label>
+                <input asp-for="Title2" class="form-control" />
+                <span asp-validation-for="Title2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptiontitle2" class="control-label"></label>
+                <input asp-for="Descriptiontitle2" class="form-control" />
+                <span asp-validation-for="Descriptiontitle2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title3" class="control-label"></label>
+                <input asp-for="Title3" class="form-control" />
+                <span asp-validation-for="Title3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptiontitle3" class="control-label"></label>
+                <input asp-for="Descriptiontitle3" class="form-control" />
+                <span asp-validation-for="Descriptiontitle3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title4" class="control-label"></label>
+                <input asp-for="Title4" class="form-control" />
+                <span asp-validation-for="Title4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptiontitle4" class="control-label"></label>
+                <input asp-for="Descriptiontitle4" class="form-control" />
+                <span asp-validation-for="Descriptiontitle4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Titlechose1" class="control-label"></label>
+                <input asp-for="Titlechose1" class="form-control" />
+                <span asp-validation-for="Titlechose1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptionchose1" class="control-label"></label>
+                <input asp-for="Descriptionchose1" class="form-control" />
+                <span asp-validation-for="Descriptionchose1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Titlechose2" class="control-label"></label>
+                <input asp-for="Titlechose2" class="form-control" />
+                <span asp-validation-for="Titlechose2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptionchose2" class="control-label"></label>
+                <input asp-for="Descriptionchose2" class="form-control" />
+                <span asp-validation-for="Descriptionchose2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Titlechose3" class="control-label"></label>
+                <input asp-for="Titlechose3" class="form-control" />
+                <span asp-validation-for="Titlechose3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptionchose3" class="control-label"></label>
+                <input asp-for="Descriptionchose3" class="form-control" />
+                <span asp-validation-for="Descriptionchose3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Titlechose4" class="control-label"></label>
+                <input asp-for="Titlechose4" class="form-control" />
+                <span asp-validation-for="Titlechose4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptionchose4" class="control-label"></label>
+                <input asp-for="Descriptionchose4" class="form-control" />
+                <span asp-validation-for="Descriptionchose4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Titlechose5" class="control-label"></label>
+                <input asp-for="Titlechose5" class="form-control" />
+                <span asp-validation-for="Titlechose5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptionchose5" class="control-label"></label>
+                <input asp-for="Descriptionchose5" class="form-control" />
+                <span asp-validation-for="Descriptionchose5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Titleimage" class="control-label"></label>
+                <input asp-for="Titleimage" class="form-control" />
+                <span asp-validation-for="Titleimage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" class="form-control" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Roleid" class="control-label"></label>
+                <select asp-for="Roleid" class ="form-control" asp-items="ViewBag.Roleid"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <select asp-for="Username" class ="form-control" asp-items="ViewBag.Username"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@
+</body>
+</html>

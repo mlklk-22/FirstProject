@@ -1,0 +1,110 @@
+﻿@model IEnumerable<FirstProject.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutDashboard2.cshtml";
+    var user = ViewBag.UserName;
+
+}
+<br /><br /><br /><br /><br /><br /><br /><br />
+ <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Status</th>
+                    <th>Day</th>
+                    <th>Time </th>
+                    <th>Price </th>
+                    <th>User</th>
+                    <th>Agreement</th>
+
+
+
+                </tr>
+            </thead>
+@foreach (var item in Model.Where(x => x.Username != null))
+    {
+   <tbody>
+                <tr>
+                    <td> @item.Place</td>
+                    <td>@item.City</td>
+                    <td>@item.Status</td>
+                    <td>@item.Day</td>
+                    <td>@item.Timefrom to @item.Timeto</td>
+                    <td>@item.Price</td>
+                    <td>@item.Username</td>
+                    <td><a  href="~/Visas/DisAgreeAdmin/@item.Hallnumber"  class="btn">Cancel</a>|<a  href="~/Visas/AgreementAcc/@item.Hallnumber"  class="btn">Accept</a></td>
+
+
+                </tr>
+            </tbody>
+        
+    }
+</table>
+@*
+    <table class="table">
+        <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>Status</th>
+                    <th>Day</th>
+                    <th>Time </th>
+                    <th>Price </th>
+                    <th>User</th>
+
+
+                </tr>
+            </thead>   
+            <tbody><tr><td>No Data Found</td></tr></tbody>
+            </table>
+    *@
+
+
+
+ @*<section id="features" class="features">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="main_features_area sections">
+                                <div class="head_title">
+                                    <h3>Get It Now!</h3>
+                                    <div class="separator"></div>
+                                </div>
+                               
+                                <div class="row">
+                                    <div class="main_features_content">
+
+                                        <div class="col-sm-6">
+                                                <div class="single_ft_s_item">
+                                                    <img src = "~/Images/@Html.DisplayFor(model => model.Image)" width="250" height="250"/>
+                                                   </div> 
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="single_features_text"> 
+                                                <h4>@Html.DisplayFor(model => model.Place)</h4>
+                                                <p>@Html.DisplayFor(model => model.Description)</p>
+
+                                                <ul>
+                                                    <li><span>Price:</span> @Html.DisplayFor(model => model.Price)</li>
+                                                    <li><span>Time:</span> @Html.DisplayFor(model => model.Timefrom) TO @Html.DisplayFor(model => model.Timeto)</li>
+                                                    <li><span>Status:</span>@Html.DisplayFor(model => model.Status) </li>
+                                                </ul>
+                                                  <h4>Pay Process</h4>
+
+                                                <a asp-action="Agreement" asp-controller="Visas"  class="btn">Visa Card</a>
+                                                <a asp-action="ReqSub" asp-controller="Visas"  class="btn">Cash</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <br /><br /><br /><br />
+                                <hr style="border-width:5px;" />
+                                
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+*@

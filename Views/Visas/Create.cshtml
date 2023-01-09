@@ -1,0 +1,68 @@
+﻿@model FirstProject.Models.Visa
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutDashboard2.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>Visa</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Firstname" class="control-label"></label>
+                <input asp-for="Firstname" class="form-control" />
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lastname" class="control-label"></label>
+                <input asp-for="Lastname" class="form-control" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cardnumber" class="control-label"></label>
+                <input asp-for="Cardnumber" class="form-control" />
+                <span asp-validation-for="Cardnumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Exp" class="control-label"></label>
+                <input asp-for="Exp" class="form-control" />
+                <span asp-validation-for="Exp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Thrnum" class="control-label"></label>
+                <input asp-for="Thrnum" class="form-control" />
+                <span asp-validation-for="Thrnum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pocket" class="control-label"></label>
+                <input asp-for="Pocket" class="form-control" />
+                <span asp-validation-for="Pocket" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Roleid" class="control-label"></label>
+                <select asp-for="Roleid" class ="form-control" asp-items="ViewBag.Roleid"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <select asp-for="Username" class ="form-control" asp-items="ViewBag.Username"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+*@

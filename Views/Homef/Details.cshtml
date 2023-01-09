@@ -1,0 +1,117 @@
+﻿@model FirstProject.Models.Home
+
+@{
+      Layout = "~/Views/Shared/_LayoutDashboard2.cshtml";;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+
+<div>
+    <h4>Home</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titleslider1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titleslider1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptionslider1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptionslider1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Titleslider2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titleslider2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptionslider2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptionslider2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Titleslider3)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titleslider3)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptionslider3)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptionslider3)
+        </dd>
+        <dt>
+            BackSliderImage
+        </dt>
+        <dd>
+            <img src="@Url.Content("~/Images/" + @Html.DisplayNameFor(model => model.Video))" />
+        </dd>
+        <dt>
+           
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titleservice1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptionservice1)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptionservice1)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Titleservice2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titleservice2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptionservice2)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptionservice2)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Titleservice3)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titleservice3)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descriptionservice3)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descriptionservice3)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Role.Rolename)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UsernameNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UsernameNavigation.Username)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Sliderimage">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+</body>
+</html>

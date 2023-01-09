@@ -1,0 +1,228 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <title>Hello, world!</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- Material Kit CSS -->
+  <link href="~/DashboardAssests/css/material-dashboard.css?v=2.1.2" rel="stylesheet" />
+   <!--Google Font link-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
+
+        <link rel="stylesheet" href="~/IndexAssests/css/font-awesome.min.css">
+        <link rel="stylesheet" href="~/IndexAssests/css/bootstrap.min.css">
+        <link rel="stylesheet" href="~/IndexAssests/css/magnific-popup.css">
+
+
+        <!--For Plugins external css-->
+        <link rel="stylesheet" href="~/IndexAssests/css/plugins.css" />
+
+        <!--Theme custom css -->
+        <link rel="stylesheet" href="~/IndexAssests/css/style.css">
+
+        <!--Theme Responsive css-->
+        <link rel="stylesheet" href="~/IndexAssests/css/responsive.css" />
+
+@*        <script src="~/IndexAssests/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+*@</head>
+<body>
+    <div class="sidebar" data-color="purple" data-background-color="white">
+      <!--
+      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+      Tip 2: you can also add an image using data-image tag
+  -->
+   @{
+var name = ViewBag.AdminName;
+var fisrtname = ViewBag.FirstName;
+var Lastname = ViewBag.LastName;
+}
+      <div class="logo" style="background-color:#FBCEB1">
+        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+           @fisrtname @Lastname <br/>
+           Manage Pages
+        </a>
+        
+        <a href="http://www.creative-tim.com" class="simple-text7 logo-normal">
+        </a>
+      </div>
+      <div class="sidebar-wrapper" style="background-color:#FBCEB1">
+        <ul class="nav" >
+            <li class="nav-item">
+            <a class="nav-link" asp-controller="Home" asp-action="Dashboard">
+              <i class="material-icons">first_page</i>
+              <p>Main </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" asp-controller="Logins" asp-action="Index">
+              <i class="material-icons">people</i>
+              <p>Users</p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" asp-controller="Homef" asp-action="Index">
+              <i class="material-icons">home</i>
+              <p>Home</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" asp-controller="Aboutus" asp-action="Index">
+              <i class="material-icons">dashboard</i>
+              <p>About Us</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" asp-controller="Contactus" asp-action="Index">
+              <i class="material-icons">contact_page</i>
+              <p>Contact Us</p>
+            </a>
+          </li> 
+          <li class="nav-item">
+            <a class="nav-link" asp-controller="Testmonials" asp-action="Index">
+              <i class="material-icons">checklist</i>
+              <p>Testmonial</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" asp-controller="Leavemessages" asp-action="Index">
+              <i class="material-icons">help</i>
+              <p>Suggetions</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" asp-controller="Reservations" asp-action="Index">
+              <i class="material-icons">book_online</i>
+              <p>Reservations</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" asp-controller="Visas" asp-action="Index">
+              <i class="material-icons">payment</i>
+              <p>Payment Details</p>
+            </a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" asp-controller="Visas" asp-action="ReqRes">
+              <i class="material-icons">hourglass_bottom</i>
+              <p>Requsted Reservation &nbsp;&nbsp; @*<span class="badge badge-light">4</span>*@</p>
+            </a>
+            </li>
+             <li class="nav-item">
+            <a class="nav-link" href="~/Logins/Edit/@name">
+              <i class="material-icons">person</i>
+              <p>My Profile</p>
+            </a>
+          </li>
+           <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="LoginAndRegistration" asp-action="LogOut">Sign Out</a>
+            </li>
+          
+          <!-- your sidebar here -->
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel" style="background-color:white">
+      <!-- Navbar -->
+  @*    <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top "  >
+        <div class="container-fluid" style="background-color:#FBCEB1;" >
+          <div class="navbar-wrapper">
+           <a class="navbar-brand" href="javascript:;">Category</a>
+                
+        
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:;">
+                  <i class="material-icons">notifications</i> Notifications
+                </a>
+              </li>
+              Hi
+            </ul>
+          </div>
+        </div>
+      </nav> *@
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="container-fluid">
+        @RenderBody()
+        </div>
+      </div>
+       <section id="footer" class="footer_widget"  88>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                        <div class="col-sm-3 col-xs-12">
+                                            <div class="single_widget wow fadeIn" data-wow-duration="800ms">
+                                                <div class="footer_logo">
+                                                   <img src="~/IndexAssests/images/Screenshot__610_-removebg-preview.png" width="150" />
+
+                                                </div>
+
+                                                <p>&copy;FirstProject By Abdulmalek Musabeh All The Posts Reserved. </p>
+
+                                            </div>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+            </div>
+
+             <div class="scrollup">
+            <a href="#"><i class="fa fa-chevron-up"></i></a>
+        </div>
+
+        <script src="~/IndexAssests/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="~/IndexAssests/js/vendor/bootstrap.min.js"></script>
+
+        <script src="~/IndexAssests/js/jquery.magnific-popup.js"></script>
+        <script src="~/IndexAssests/js/jquery.mixitup.min.js"></script>
+        <script src="~/IndexAssests/js/jquery.easing.1.3.js"></script>
+        <script src="~/IndexAssests/js/jquery.masonry.min.js"></script>
+
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+        <script src="http://maps.google.com/maps/api/js"></script>
+        <script src="~/IndexAssests/js/gmaps.min.js"></script>
+
+
+        <script>
+
+                                            function showmap() {
+                                                var mapOptions = {
+                                                    zoom: 8,
+                                                    scrollwheel: false,
+                                                    center: new google.maps.LatLng(-34.397, 150.644),
+                                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                                };
+                                                var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+                                            }
+        </script>
+
+        <script src="~/IndexAssests/js/plugins.js"></script>
+        <script src="~/IndexAssests/js/main.js"></script>
+
+   
+    
+</body>
+</html>

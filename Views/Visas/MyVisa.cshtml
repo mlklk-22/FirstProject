@@ -1,0 +1,96 @@
+﻿@model IEnumerable<FirstProject.Models.Visa>
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutUserHF.cshtml";
+        var user = ViewBag.UserName;
+}
+
+@*<h2>Details</h2>
+
+<div>
+    <h4>Visa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Firstname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Firstname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Lastname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Lastname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Exp)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Exp)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Thrnum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Thrnum)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pocket)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pocket)
+        </dd>
+        <br><br><br><br><br><br><br><br><br><br>*@
+        <br /><br /><br /><br /><br /><br /><br /><br />
+<table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Exp</th>
+                    <th>Three Num</th>
+                    <th>Pocket</th>
+                   @* <th>Time </th>
+                    <th>Price </th>
+                    <th>User</th>
+*@
+
+                </tr>
+            </thead>
+@foreach (var item in Model)
+    {
+@if (@user == item.Username)
+      {
+            <tbody>
+                <tr>
+                    <td> @item.Firstname @item.Lastname</td>
+                    <td>@item.Exp</td>
+                    <td>@item.Thrnum</td>
+                    <td>@item.Pocket JD</td>
+                  
+
+                </tr>
+            </tbody>
+        }
+    }
+</table>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      @*  <dt>
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Role.Rolename)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UsernameNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UsernameNavigation.Username)
+        </dd>*@
+    </dl>
+</div>
+@*<div>
+    <a asp-action="Edit" asp-route-id="@Model.Cardnumber">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>*@

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<FirstProject.Models.Testmonial>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutDashboard2.cshtml";
+}
+
+    <h3 style="color:rosybrown"> Testmonial Page</h3>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Firstname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lastname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Message)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsernameNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firstname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lastname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role.Rolename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsernameNavigation.Username)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Testmonialid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Testmonialid">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Testmonialid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>

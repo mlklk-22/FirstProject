@@ -1,0 +1,113 @@
+﻿@model FirstProject.Models.Home
+
+@{
+      Layout = "~/Views/Shared/_LayoutDashboard2.cshtml";;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+
+<h4>Home</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Titleslider1" class="control-label"></label>
+                <input asp-for="Titleslider1" class="form-control" />
+                <span asp-validation-for="Titleslider1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptionslider1" class="control-label"></label>
+                <input asp-for="Descriptionslider1" class="form-control" />
+                <span asp-validation-for="Descriptionslider1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Titleslider2" class="control-label"></label>
+                <input asp-for="Titleslider2" class="form-control" />
+                <span asp-validation-for="Titleslider2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptionslider2" class="control-label"></label>
+                <input asp-for="Descriptionslider2" class="form-control" />
+                <span asp-validation-for="Descriptionslider2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Titleslider3" class="control-label"></label>
+                <input asp-for="Titleslider3" class="form-control" />
+                <span asp-validation-for="Titleslider3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptionslider3" class="control-label"></label>
+                <input asp-for="Descriptionslider3" class="form-control" />
+                <span asp-validation-for="Descriptionslider3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sliderimage" class="control-label"></label>
+                <input asp-for="Sliderimage" class="form-control" />
+                <span asp-validation-for="Sliderimage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" class="form-control" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Titleservice1" class="control-label"></label>
+                <input asp-for="Titleservice1" class="form-control" />
+                <span asp-validation-for="Titleservice1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptionservice1" class="control-label"></label>
+                <input asp-for="Descriptionservice1" class="form-control" />
+                <span asp-validation-for="Descriptionservice1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Titleservice2" class="control-label"></label>
+                <input asp-for="Titleservice2" class="form-control" />
+                <span asp-validation-for="Titleservice2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptionservice2" class="control-label"></label>
+                <input asp-for="Descriptionservice2" class="form-control" />
+                <span asp-validation-for="Descriptionservice2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Titleservice3" class="control-label"></label>
+                <input asp-for="Titleservice3" class="form-control" />
+                <span asp-validation-for="Titleservice3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptionservice3" class="control-label"></label>
+                <input asp-for="Descriptionservice3" class="form-control" />
+                <span asp-validation-for="Descriptionservice3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Roleid" class="control-label"></label>
+                <select asp-for="Roleid" class ="form-control" asp-items="ViewBag.Roleid"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <select asp-for="Username" class ="form-control" asp-items="ViewBag.Username"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+</body>
+</html>

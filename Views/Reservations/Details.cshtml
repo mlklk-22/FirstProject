@@ -1,0 +1,127 @@
+﻿@model FirstProject.Models.Reservation
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_LayoutUserHF.cshtml";
+    var name = ViewBag.UserName;
+
+}
+
+<h2>Details</h2>
+
+@*<div>
+    <h4>Reservation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Place)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Place)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Timefrom)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Timefrom)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Timeto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Timeto)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Day)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Day)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CategoryNavigation.Categoryname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.UsernameNavigation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UsernameNavigation.Username)
+        </dd>
+    </dl>
+</div>*@
+
+ <section id="features" class="features">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="main_features_area sections">
+                                <div class="head_title">
+                                    <h3>Get It Now!</h3>
+                                    <div class="separator"></div>
+                                </div>
+                               
+                                <div class="row">
+                                    <div class="main_features_content">
+
+                                        <div class="col-sm-6">
+                                                <div class="single_ft_s_item">
+                                                    <img src = "~/Images/@Html.DisplayFor(model => model.Image)" width="250" height="250"/>
+                                                   </div> 
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="single_features_text"> 
+                                                <h4>@Html.DisplayFor(model => model.Place)</h4>
+                                                <p>@Html.DisplayFor(model => model.Description)</p>
+
+                                                <ul>
+                                                    <li><span>Price:</span> @Html.DisplayFor(model => model.Price)</li>
+                                                    <li><span>Time:</span> @Html.DisplayFor(model => model.Timefrom) TO @Html.DisplayFor(model => model.Timeto)</li>
+                                                    <li><span>Status:</span>@Html.DisplayFor(model => model.Status) </li>
+                                                </ul>
+                                                  <h4>Pay Process</h4>
+@* asp-action="Agreement" asp-controller="Visas"*@
+                                                <a href="~/Visas/Agreement/@Html.DisplayFor(model => model.Hallnumber)"  class="btn">Visa Card</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <br /><br /><br /><br />
+                                <hr style="border-width:5px;" />
+                                
+                              </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+@*<div>
+    <a asp-action="Edit" asp-route-id="@Model.Hallnumber">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+*@

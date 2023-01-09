@@ -1,0 +1,395 @@
+﻿ @model IEnumerable<FirstProject.Models.Aboutu>
+  
+ @{
+    Layout = "~/Views/Shared/_LayoutUserHF.cshtml";
+    }
+   @foreach (var item in Model) {
+<section id="service" class="service">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="main_service_area">
+                                <div class="main_service_content">
+                                    <div class="service_tabe">
+                                        <!-- Nav tabs -->
+                                        <ul class="service_tabe_menu nav nav-tabs" role="tablist">
+                                            <li role="presentation" class="active"><a href="#webdesign" aria-controls="webdesign" role="tab" data-toggle="tab"><i class="fa fa-map-marker"></i> <br />@Html.DisplayFor(modelItem => item.Title1)</a></li>
+                                            <li role="presentation"><a href="#appdesign" aria-controls="appdesign" role="tab" data-toggle="tab"><i class="fa fa-map-marker"></i> <br />@Html.DisplayFor(modelItem => item.Title2)</a></li>
+                                            <li role="presentation"><a href="#graphicdesign" aria-controls="graphicdesign" role="tab" data-toggle="tab"><i class="fa fa-map-marker"></i> <br />@Html.DisplayFor(modelItem => item.Title3)</a></li>
+                                            <li role="presentation"><a href="#gamedesign" aria-controls="gamedesign" role="tab" data-toggle="tab"><i class="fa fa-map-marker"></i> <br />@Html.DisplayFor(modelItem => item.Title4)</a></li>
+                                        </ul>
+
+                                        <!-- Tab panes -->
+                                       
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane active" id="webdesign">
+                                                <div class="single_service_tab">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="single_tab_content">
+                                                                <div class="head_title">
+                                                                    <h3>@Html.DisplayFor(modelItem => item.Title1)</h3>
+                                                                    <div class="separator"></div>
+                                                                </div>
+                                                                <p>@Html.DisplayFor(modelItem => item.Descriptiontitle1) </p>
+
+                                                                <a href="" class="btn btn-primary">LEARN MORE</a>
+                                                            </div>
+                                                        </div>
+
+                                                            @*<div class="col-sm-6">
+                                                                <div class="single_tab_img">
+                                                                    <img src="~/IndexAssests/images/stab1.png" alt="" />
+                                                                </div>
+                                                            </div>*@
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="appdesign">
+                                                <div class="single_service_tab">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="single_tab_content">
+                                                                <div class="head_title">
+                                                                    <h3>@Html.DisplayFor(modelItem => item.Title2)</h3>
+                                                                    <div class="separator"></div>
+                                                                </div>
+                                                                <p>@Html.DisplayFor(modelItem => item.Descriptiontitle2) </p>
+
+                                                                <a href="" class="btn btn-primary">LEARN MORE</a>
+                                                            </div>
+                                                        </div>
+
+                                                       
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="graphicdesign">
+                                                <div class="single_service_tab">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="single_tab_content">
+                                                                <div class="head_title">
+                                                                    <h3>@Html.DisplayFor(modelItem => item.Title3)</h3>
+                                                                    <div class="separator"></div>
+                                                                </div>
+                                                                <p>@Html.DisplayFor(modelItem => item.Descriptiontitle3)</p>
+
+                                                                <a href="" class="btn btn-primary">LEARN MORE</a>
+                                                            </div>
+                                                        </div>
+
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane" id="gamedesign">
+                                                <div class="single_service_tab">
+                                                    <div class="row">
+                                                        <div class="col-sm-6">
+                                                            <div class="single_tab_content">
+                                                                <div class="head_title">
+                                                                    <h3>@Html.DisplayFor(modelItem => item.Title4)</h3>
+                                                                    <div class="separator"></div>
+                                                                </div>
+                                                                <p>@Html.DisplayFor(modelItem => item.Descriptiontitle4)</p>
+
+                                                                <a href="" class="btn btn-primary">LEARN MORE</a>
+                                                            </div>
+                                                        </div>
+
+                                                     
+                                                        <!--                                                        <div id="pentagon"></div>-->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+@*
+                 <section id="about" class="about">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="main_about_area sections">
+                            <div class="col-sm-12">
+
+                                <div class="main_about_content">
+                                    <div class="row">
+
+                                        <div class="col-sm-7 wow fadeInRight" data-wow-duration="700ms">
+                                            <div class="single_about_right_content">
+                                                <div class="head_title">
+                                                    <h3>ABOUT LOGIC</h3>
+                                                    <div class="separator"></div>
+                                                </div>
+
+                                                <div class="single_about">
+                                                    <div class="single_ab_icon">
+                                                        <div class="ab_border_right"></div>
+                                                        <i class="fa fa-coffee"></i>
+                                                    </div>
+                                                    <div class="single_ab_text">
+                                                        <h3>RESPONSIVE DESIGN</h3>
+                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                                            Lorem Ipsum has been the industry's standard dummy text</p>
+                                                    </div>
+                                                </div>
+                                                <div class="single_about">
+                                                    <div class="single_ab_icon">
+
+                                                        <i class="fa fa-paint-brush"></i>
+                                                    </div>
+                                                    <div class="single_ab_text">
+                                                        <h3>EASY TO CUSTOMIZE</h3>
+                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                                            Lorem Ipsum has been the industry's standard dummy text</p>
+                                                    </div>
+                                                </div>
+                                                <div class="single_about">
+                                                    <div class="single_ab_icon">
+                                                        <i class="fa fa-headphones"></i>
+                                                    </div>
+                                                    <div class="single_ab_text">
+                                                        <h3>LIFE TIME SUPPORT</h3>
+                                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                                            Lorem Ipsum has been the industry's standard dummy text</p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-5">
+                                            <div class="single_about_left_img margin-top-40 text-center wow fadeInLeft" data-wow-duration=".6s">
+                                                <img src="~/IndexAssests/images/abright.png" alt="" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="about_skill_area">
+                                            <div class="col-sm-6">
+                                                <div class="about_tabe">
+                                                    <!-- Nav tabs -->
+                                                    <ul class="about_tabe_menu" role="tablist">
+                                                        <li role="presentation" class="active"><a href="#mission" aria-controls="mission" role="tab" data-toggle="tab">OUR MISSION</a></li>
+                                                        <li role="presentation"><a href="#goal" aria-controls="goal" role="tab" data-toggle="tab">OUR GOAL</a></li>
+                                                        <li role="presentation"><a href="#achivements" aria-controls="achivements" role="tab" data-toggle="tab">ACHIVEMENTS</a></li>
+                                                    </ul>
+
+                                                    <!-- Tab panes -->
+                                                    <div class="tab-content">
+                                                        <div role="tabpanel" class="tab-pane active" id="mission">
+                                                            <div class="single_about_tab">
+                                                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                                                    when an unknown printer took a galley type a scrambled it to make a type specimen book. 
+                                                                    It has survived not only five centuries,</p>
+
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <ul class="single_ab_mision">
+                                                                            <li><i class="fa fa-check-square"></i> We just want to love our client</li>
+                                                                            <li><i class="fa fa-check-square"></i> We just want to love our client</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <ul class="single_ab_mision">
+                                                                            <li><i class="fa fa-check-square"></i> We just want to love our client</li>
+                                                                            <li><i class="fa fa-check-square"></i> We just want to love our client</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane" id="goal">
+                                                            <div class="single_about_tab">
+                                                                <p>222Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                                                    when an unknown printer took a galley type a scrambled it to make a type specimen book. 
+                                                                    It has survived not only five centuries,</p>
+
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <ul class="single_ab_mision">
+                                                                            <li><i class="fa fa-check-square"></i> We just want to love our client</li>
+                                                                            <li><i class="fa fa-check-square"></i> We just want to love our client</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <ul class="single_ab_mision">
+                                                                            <li><i class="fa fa-check-square"></i> We just want to love our client</li>
+                                                                            <li><i class="fa fa-check-square"></i> We just want to love our client</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div role="tabpanel" class="tab-pane" id="achivements">
+                                                            <div class="single_about_tab">
+                                                                <p>333Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                                                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                                                                    when an unknown printer took a galley type a scrambled it to make a type specimen book. 
+                                                                    It has survived not only five centuries,</p>
+
+                                                                <div class="row">
+                                                                    <div class="col-sm-6">
+                                                                        <ul class="single_ab_mision">
+                                                                            <li><i class="fa fa-check-square"></i> We just want to love our client</li>
+                                                                            <li><i class="fa fa-check-square"></i> We just want to love our client</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="col-sm-6">
+                                                                        <ul class="single_ab_mision">
+                                                                            <li><i class="fa fa-check-square"></i> We just want to love our client</li>
+                                                                            <li><i class="fa fa-check-square"></i> We just want to love our client</li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="about_skill">
+                                                    <div class="skillbar" data-percent="79%">
+                                                        <div class="skillbar-title"><h3 class="blue">PHOTOSHOP</h3><span class="sm-text">79%</span></div>
+                                                        <div class="skillbar-bar blue"></div>
+                                                    </div>
+
+                                                    <div class="skillbar" data-percent="90%">
+                                                        <div class="skillbar-title"><h3 class="blue">HTML/CSS</h3><span class="sm-text">90%</span></div>
+                                                        <div class="skillbar-bar blue"></div>
+                                                    </div>
+
+                                                    <div class="skillbar" data-percent="69%">
+                                                        <div class="skillbar-title"><h3 class="blue">JAVASCRIPT</h3><span class="sm-text">69%</span></div>
+                                                        <div class="skillbar-bar blue"></div>
+                                                    </div>
+
+                                                    <div class="skillbar" data-percent="92%">
+                                                        <div class="skillbar-title"><h3 class="blue">WORDPRESS</h3><span class="sm-text">92%</span></div>
+                                                        <div class="skillbar-bar blue"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+*@
+
+                                                        
+            <section id="choose" class="choose">
+                <div class="container">
+                    <div class="row">
+                        <div class="main_choose sections">
+                            <div class="col-sm-6">
+                                <div class="head_title">
+                                    <h3>WHY CHOOSE US</h3>
+                                    <div class="separator"></div>
+                                </div>
+                                <div class="single_choose">
+                                    <div class="single_choose_acording">
+                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="headingOne">
+                                                    <h4 class="panel-title">
+                                                        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                                                            <i class="fa fa-picture-o"></i>@Html.DisplayFor(modelItem => item.Titlechose1)
+ 
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: auto;">
+                                                    <div class="panel-body">
+                                                                       @Html.DisplayFor(modelItem => item.Descriptionchose1)
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="headingTwo">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                            <i class="fa fa-map-signs"></i> @Html.DisplayFor(modelItem => item.Titlechose2) 
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false">
+                                                    <div class="panel-body">
+                                                       @Html.DisplayFor(modelItem => item.Descriptionchose2)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="headingThree">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                            <i class="fa fa-bullseye"></i> @Html.DisplayFor(modelItem => item.Titlechose3)  
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
+                                                    <div class="panel-body">
+                                                        @Html.DisplayFor(modelItem => item.Descriptionchose3)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="headingThree">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapseThree">
+                                                            <i class="fa fa-umbrella"></i>@Html.DisplayFor(modelItem => item.Titlechose4) 
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false">
+                                                    <div class="panel-body">
+                                                       @Html.DisplayFor(modelItem => item.Descriptionchose4)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="headingThree">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefive" aria-expanded="false" aria-controls="collapseThree">
+                                                            <i class="fa fa-subway"></i>@Html.DisplayFor(modelItem => item.Titlechose5)  
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapsefive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingfive" aria-expanded="false">
+                                                    <div class="panel-body">
+                                                       @Html.DisplayFor(modelItem => item.Descriptionchose5)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                           @* <div class="col-sm-6">
+                                <div class="single_choose">
+                                    <div class="single_choose_img">
+                                        <img src=@Html.DisplayFor(modelItem => item.Choseimage) width="100" height="250" alt="">
+                                    </div>
+                                </div>
+                            </div>*@
+                        </div>
+                    </div>
+                </div>
+            </section>
+            }

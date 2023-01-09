@@ -1,0 +1,42 @@
+﻿@model FirstProject.Models.Login
+
+@{
+    Layout = "~/Views/Shared/_LayoutUserHF.cshtml";
+        var name = ViewBag.UserName;
+
+
+}
+
+
+<br /><br /><br /><br /><br /><br /><br />
+<div>
+    <hr />
+    <table  class="table">
+        <thead>
+            <tr>
+                <th> @Html.DisplayNameFor(model => model.Firstname)</th>
+                <th> @Html.DisplayNameFor(model => model.Lastname)</th>
+                <th> @Html.DisplayNameFor(model => model.Phonenumber)</th>
+                <th> @Html.DisplayNameFor(model => model.Email)</th>
+                <th> @Html.DisplayNameFor(model => model.Password)</th>            
+            </tr>
+           
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.Firstname)</td>
+                <td>@Html.DisplayFor(model => model.Lastname)</td>
+                <td>@Html.DisplayFor(model => model.Phonenumber)</td>
+                <td>@Html.DisplayFor(model => model.Email)</td>
+                <td>@Html.DisplayFor(model => model.Password)</td>
+             <tr>
+       </tbody>
+      
+    </table>
+</div>
+<div>
+    @*asp-route-id="@Model.Username"*@
+    <a href="~/Logins/Profile/@name" >Edit</a> 
+@*    <a asp-action="Index">Back to List</a>
+*@</div>
+<br /><br /><br /><br /><br /><br /><br />

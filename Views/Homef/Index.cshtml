@@ -1,0 +1,121 @@
+﻿@model IEnumerable<FirstProject.Models.Home>
+
+@{
+      Layout = "~/Views/Shared/_LayoutDashboard2.cshtml";
+}
+
+
+        <h3 style="color:rosybrown"> Home Page</h3>
+
+
+<table class="table" style="margin-right:250px;">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Titleslider1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptionslider1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titleslider2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptionslider2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titleslider3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptionslider3)
+            </th>
+            <th>
+                BackSliderImage
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titleservice1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptionservice1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titleservice2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptionservice2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titleservice3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptionservice3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsernameNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titleslider1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descriptionslider1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titleslider2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descriptionslider2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titleslider3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descriptionslider3)
+                </td>
+                <td>
+                    <img src="@Url.Content("~/Images/" + @item.Video)"/>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titleservice1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descriptionservice1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titleservice2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descriptionservice2)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titleservice3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descriptionservice3)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role.Rolename)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UsernameNavigation.Username)
+                </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Sliderimage">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Sliderimage">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Sliderimage">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>

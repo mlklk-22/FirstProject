@@ -1,0 +1,83 @@
+﻿@model FirstProject.Models.Contactu
+
+@{
+      Layout = "~/Views/Shared/_LayoutDashboard2.cshtml";;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<h4>Contactu</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Visittitle" class="control-label"></label>
+                <input asp-for="Visittitle" class="form-control" />
+                <span asp-validation-for="Visittitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptionvisit" class="control-label"></label>
+                <input asp-for="Descriptionvisit" class="form-control" />
+                <span asp-validation-for="Descriptionvisit" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Mailtitle" />
+            <div class="form-group">
+                <label asp-for="Descriptionmail" class="control-label"></label>
+                <input asp-for="Descriptionmail" class="form-control" />
+                <span asp-validation-for="Descriptionmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Call" class="control-label"></label>
+                <input asp-for="Call" class="form-control" />
+                <span asp-validation-for="Call" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptioncall" class="control-label"></label>
+                <input asp-for="Descriptioncall" class="form-control" />
+                <span asp-validation-for="Descriptioncall" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Work" class="control-label"></label>
+                <input asp-for="Work" class="form-control" />
+                <span asp-validation-for="Work" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Descriptionwork" class="control-label"></label>
+                <input asp-for="Descriptionwork" class="form-control" />
+                <span asp-validation-for="Descriptionwork" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Roleid" class="control-label"></label>
+                <select asp-for="Roleid" class="form-control" asp-items="ViewBag.Roleid"></select>
+                <span asp-validation-for="Roleid" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <select asp-for="Username" class="form-control" asp-items="ViewBag.Username"></select>
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}*@
+</body>
+</html>

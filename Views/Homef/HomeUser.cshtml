@@ -1,0 +1,249 @@
+﻿@*@model IEnumerable<FirstProject.Models.Home>
+*@
+@model Tuple<IEnumerable<FirstProject.Models.Home>, IEnumerable<FirstProject.Models.Reservation>>
+
+@{
+    Layout = "~/Views/Shared/_LayoutUserHF.cshtml";
+
+    }
+ 
+      @foreach (var item in Model.Item1) {
+    
+    <section id="home" class="home">
+                <div class="overlay">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12 ">
+                                <div class="main_home_slider text-center">
+                                    <div class="single_home_slider">
+                                        <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                            <h1> @Html.DisplayFor(modelItem => item.Titleslider1)   </h1>
+                                            <p>@Html.DisplayFor(modelItem => item.Descriptionslider1)</p>
+                                            @*<div class="home_btn">
+                                                <a href="#Hall" class="btn btn-primary">LEARN MORE</a>
+                                            </div>*@
+
+                                        </div>
+                                    </div>
+                                    <div class="single_home_slider">
+                                        <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                            <h1>@Html.DisplayFor(modelItem => item.Titleslider2)</h1>
+                                            <p>@Html.DisplayFor(modelItem => item.Descriptionslider2)</p>
+                                           @* <div class="home_btn">
+                                                <a href="https://bootstrapthemes.co" class="btn btn-primary">LEARN MORE</a>
+                                            </div>
+*@
+                                        </div>
+                                    </div>
+                                    <div class="single_home_slider">
+                                        <div class="main_home wow fadeInUp" data-wow-duration="700ms">
+                                            <h1>@Html.DisplayFor(modelItem => item.Titleslider3)</h1>
+                                            <p>@Html.DisplayFor(modelItem => item.Descriptionslider3)</p>
+                                           @* <div class="home_btn">
+                                                <a href="https://bootstrapthemes.co" class="btn btn-primary">LEARN MORE</a>
+                                            </div>*@
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            }
+              
+            <section id="features" class="features">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="main_features_area sections">
+                                <div class="head_title">
+                                    <h3 id="Hall">Hall reservation</h3>
+                                    <div class="separator"></div>
+                                </div>
+                                @foreach (var item in Model.Item2)
+                                { 
+                                 <div class="col-md-4 container" >
+                                <div  class="card" style="width: 18rem;">
+                                    <img id="first" src="@Url.Content("~/Images/" + @item.Image)" width="250" height="250" class="card-img-top" alt="..."/> 
+                                    <div class="card-body">
+                                        <h5 onmouseover="onHover(this)" onmouseout="onHoverOut(this)" id="petra" class="card-title">@Html.DisplayFor(model => item.Place)</h5>
+                                        <p  class="card-text">
+                                           @Html.DisplayFor(model => item.Description)
+                                           <br>
+                                           <br>
+                                            Price: @Html.DisplayFor(model => item.Price)JD
+                                            <br>
+                                            Time: @Html.DisplayFor(model => item.Timefrom) TO @Html.DisplayFor(model => item.Timeto)
+                                            <br>
+                                            Status:@Html.DisplayFor(model => item.Status)
+                                            <br>
+                                        </p>
+                                       <a style="background:#ED7235" asp-controller="Reservations" asp-action="Search" class="btn">LAUNCH NOW</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+           @* <div class="container">
+            <div class="row">
+               
+              </div>
+           </div>*@
+           @*
+                <div class="row">
+                                    <div class="main_features_content">
+
+                                        <div class="col-sm-6">
+                                                <div class="single_ft_s_item">
+                                                    <img src="@Url.Content("~/Images/" + @item.Image)" width="250" height="250"/> 
+                                                    </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="single_features_text"> 
+                                                <h4>@Html.DisplayFor(model => item.Place)</h4>
+                                                <p>@Html.DisplayFor(model => item.Description)</p>
+
+                                                <ul>
+                                                    <li><span>Price:</span> @Html.DisplayFor(model => item.Price)JD</li>
+                                                    <li><span>Time:</span> @Html.DisplayFor(model => item.Timefrom) TO @Html.DisplayFor(model => item.Timeto)</li>
+                                                    <li><span>Status:</span>@Html.DisplayFor(model => item.Status) </li>
+                                                </ul>
+
+                                                <a asp-controller="Reservations" asp-action="Search" class="btn">LAUNCH NOW</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <br /><br /><br /><br />
+                                <hr style="border-width:5px;" />
+           *@
+          
+                                     @foreach (var item in Model.Item1) {
+
+
+             <section id="othersservice" class="othersservice">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="main_othersservice_area sections">
+                                <div class="row">
+                                    <div class="head_title">
+                                        <h3>OOUR SERVICES</h3>
+                                        <div class="separator"></div>
+                                    </div>
+
+                                    <div class="main_othersservice_content">
+                                        <div class="col-sm-4">
+                                            <div class="single_othersservice">
+                                                <div class="single_othersservice_icon">
+                                                    <h4><span><i class="fa fa-clock-o"></i></span>@Html.DisplayFor(modelItem => item.Titleservice1)</h4>
+                                                </div>
+                                                <div class="single_othersservice_content">
+                                                    <p>@Html.DisplayFor(modelItem => item.Descriptionservice1)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="single_othersservice">
+                                                <div class="single_othersservice_icon">
+                                                    <h4> <span><i class="fa fa-picture-o"></i></span> @Html.DisplayFor(modelItem => item.Titleservice2)</h4>
+                                                </div>
+                                                <div class="single_othersservice_content">
+                                                    <p>@Html.DisplayFor(modelItem => item.Descriptionservice2)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="single_othersservice">
+                                                <div class="single_othersservice_icon">
+                                                    <h4> <span><i class="fa fa-television"></i></span>@Html.DisplayFor(modelItem => item.Titleservice3)</h4>
+                                                </div>
+                                                <div class="single_othersservice_content">
+                                                    <p>@Html.DisplayFor(modelItem => item.Descriptionservice3)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>         
+
+            }
+
+           @{var test = ViewBag.testmonials;}
+<section id="counter" class="counter">
+                <div class="video_overlay">
+                    <div class="container">
+                        <div class="row">  
+                            <div class="col-sm-12">               
+                                <div class="main_counter_area text-center">
+
+                                    <div class="row">
+                                        <div class="single_counter border_right">
+                                            <div class="col-sm-3 col-xs-12">
+                                                <div class="single_counter_item">
+                                                    <h2 class="statistic-counter">@ViewBag.NumberOfUsers</h2>
+                                                    <i class="icon icon-thumbs-up"></i>
+                                                    <p class="margin-top-20">Users</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="single_counter">
+                                            <div class="col-sm-3 col-xs-12">
+                                                <div class="single_counter_item">
+                                                    <h2 class="statistic-counter">@test</h2>
+                                                    <i class="icon icon-business-3"></i>
+                                                    <p class="margin-top-20">Tesmonials</p>  
+                                                </div>
+
+                                            </div>
+                                        </div> 
+
+                                        <div class="single_counter">
+                                            <div class="col-sm-3 col-xs-12">
+                                                <div class="single_counter_item">
+                                                    <h2 class="statistic-counter">@ViewBag.countBook</h2>
+                                                    <i class="icon icon-people-32"></i>
+                                                    <p class="margin-top-20">Booked Rooms</p>  
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="single_counter">
+                                            <div class="col-sm-3 col-xs-12">
+                                                <div class="single_counter_item">
+                                                    <h2 class="statistic-counter">@ViewBag.countNotBook</h2>
+                                                    <i class="icon icon-cup"></i>
+                                                    <p class="margin-top-20">Unbooked Rooms</p> 
+                                                </div>
+
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>  <!-- End of counter section -->
+ 
+
+            @{
+
+            }
+            
+            
+         <br /><br /><br />

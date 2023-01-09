@@ -1,0 +1,94 @@
+﻿@model IEnumerable<FirstProject.Models.Contactu>
+
+@{
+      Layout = "~/Views/Shared/_LayoutDashboard2.cshtml";;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+        <h3 style="color:rosybrown"> ContactUs Page</h3>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Visittitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptionvisit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptionmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Call)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptioncall)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Work)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descriptionwork)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsernameNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visittitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptionvisit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptionmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Call)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptioncall)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Work)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriptionwork)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role.Rolename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UsernameNavigation.Username)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Mailtitle">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Mailtitle">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Mailtitle">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+</body>
+</html>

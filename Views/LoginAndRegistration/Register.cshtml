@@ -1,0 +1,72 @@
+﻿    @model FirstProject.Models.Login
+    
+@{
+    Layout = "~/Views/Shared/_LayoutOut.cshtml";
+    }
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Form-v6 by Colorlib</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="~/Dashboard-log/css/nunito-font.css">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="~/Dashboard-log/css/style.css"/>
+</head>
+<body class="form-v6"> 
+	<div class="page-content">
+		<div class="form-v6-content">
+			<div class="form-left">
+				<img src="~/Dashboard-log/images/photo-1511802684173-b35d634c5599.jpg" width="500" height="600" alt="form">
+			</div>
+            <br> <br />
+               <br> <br />
+		 	  <form class="form-detail"  method="POST"  asp-area="" asp-controller="Logins" asp-action="Create">
+                   <br />  <br />
+                 <h2>Sign Up </h2>
+                                  
+                                <div class="form-row">
+                                    <label asp-for="Firstname" class="control-label"></label>
+                                    <input asp-for="Firstname" class="form-control" placeholder="Firstname"/>
+                                    <span asp-validation-for="Firstname" class="text-danger"></span>
+                                </div>
+                                <div class="form-row">
+                                        <label asp-for="Lastname" class="control-label"></label>
+                                        <input asp-for="Lastname" class="form-control" placeholder="Lastname"/>
+                                        <span asp-validation-for="Lastname" class="text-danger"></span>
+                                    </div> 
+                                        <div class="form-row">
+                                <label asp-for="Username" class="control-label"></label>
+                                <input asp-for="Username" class="form-control" placeholder="Username" />
+                                <span asp-validation-for="Username" class="text-danger"></span>
+                                     </div>
+                                     <div class="form-row">
+                                        <label asp-for="Password" class="control-label"></label>
+                                        <input  type="password"   asp-for="Password" class="form-control" placeholder="Password"/>
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                     <div class="form-row">
+                                        <label asp-for="Phonenumber" class="control-label"></label>
+                                        <input asp-for="Phonenumber" class="form-control" placeholder="Phonenumber"/>
+                                        <span asp-validation-for="Phonenumber" class="text-danger"></span>
+                                    </div>
+
+                                 <div class="form-row">
+                                        <label asp-for="Email" class="control-label"></label>
+                                        <input asp-for="Email" class="form-control" placeholder="Email"/>
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div> 
+                                    <br />
+                                  <br />
+                                      <div class="form-row-last">
+                                       <input   type="submit" value="Sign Up"   class="btn btn-default" style="background-color:#ED7235"  />
+
+                                   </div>
+                                 </form>
+		</div>                                              
+
+	</div>
+</body> 
+</html>

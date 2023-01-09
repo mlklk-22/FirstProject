@@ -1,0 +1,126 @@
+﻿@model FirstProject.Models.Visa
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutUserHF.cshtml";
+}
+<br /><br /><br /><br /><br /><br />
+<head>
+<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Cabin:400,700" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="~/AssestsVisa/css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="~/AssestsVisa/css/style.css" />
+</head>
+	<div id="booking" class="section">
+		<div class="section-center">
+			<div class="container">
+				<div class="row">
+					<div class="booking-form">
+ 						<div class="booking-bg"></div>
+ 					<form asp-action="Create">
+							<div class="form-header">
+								<h2>Payment Details</h2>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<span  class="form-label">First Name</span>
+										<input asp-for="Firstname" class="form-control" type="text" required>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">Last Name</span>
+										<input asp-for="Lastname" class="form-control" type="text" required>
+									</div>
+								</div>
+							</div>
+							
+								
+							<div class="form-group">
+								<span class="form-label">Card Number</span>
+								<input asp-for="Cardnumber" class="form-control" type="text" placeholder="Card Number">
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+							<div class="form-group">
+										<span class="form-label">Expiration</span>
+										<input asp-for="Exp" class="form-control" type="date" placeholder="Exp">
+
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<span class="form-label">CVV</span>
+										<input asp-for="Thrnum" class="form-control" type="text" placeholder="Security Code">
+
+									</div>
+								</div>
+							</div>
+						
+							<div class="form-btn">
+								<button class="submit-btn">Create</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+@*<div class="row">
+    <div class="col-md-4" style="margin-left:550px">
+        <h2>Payment Details</h2>
+        <br />
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Firstname" class="control-label"></label>
+                <input asp-for="Firstname" class="form-control" />
+                <span asp-validation-for="Firstname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lastname" class="control-label"></label>
+                <input asp-for="Lastname" class="form-control" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cardnumber" class="control-label"></label>
+                <input asp-for="Cardnumber" class="form-control" />
+                <span asp-validation-for="Cardnumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Exp" class="control-label"></label>
+                <input asp-for="Exp" class="form-control" />
+                <span asp-validation-for="Exp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Thrnum" class="control-label"></label>
+                <input asp-for="Thrnum" class="form-control" />
+                <span asp-validation-for="Thrnum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pocket" class="control-label">My Pocket</label>
+                <input asp-for="Pocket" class="form-control" />
+                <span asp-validation-for="Pocket" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Pay" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>*@
+
+@*<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+<*@
+
+
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+*@

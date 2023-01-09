@@ -1,0 +1,52 @@
+﻿    @model FirstProject.Models.Login
+    
+
+@{
+    Layout = "~/Views/Shared/_LayoutSign.cshtml";
+    }
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Login</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="~/Dashboard-log/css/nunito-font.css">
+    <link rel="stylesheet" href="~/Dashboard-log/css/style.css"/>
+</head>
+<body class="form-v6"> 
+	<div class="page-content">
+		<div class="form-v6-content">
+			<div class="form-left">
+				<img src="~/Dashboard-log/images/photo-1511802684173-b35d634c5599.jpg" width="500" height="600" alt="form">
+			</div>
+            <br> <br />
+               <br> <br />
+		 	  <form class="form-detail"  method="POST" asp-action="Login">
+                   <br />  <br />
+                 <h2>Login </h2>
+                                         <div class="form-row">
+                                        <label asp-for="Username" class="control-label"> UserName</label>
+                                        <input asp-for="Username" class="form-control" placeholder="UserName" />
+                                        <span asp-validation-for="Username" class="text-danger"></span>
+                                    </div>
+
+                                     <div  class="form-row">
+                                        <label asp-for="Password" class="control-label"> Password</label>
+                                        <input asp-for="Password"  type="password" class="form-control" placeholder="Password" />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                   <br/>
+                                     <div  class="form-row-last"> >
+                                       <input type="submit" value="Login" class="btn btn-default" style="background-color:#ED7235" />
+                                   </div> 
+                                       <br />
+                                      <div class="form-row-last">
+                                       <input asp-action="Register" type="submit" value="Create New Account"   class="btn btn-default" style="background-color:#ED7235"  />
+
+                                   </div>
+                                 </form>
+		</div>                                              
+
+	</div>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
