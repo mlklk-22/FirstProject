@@ -22,6 +22,7 @@ namespace FirstProject.Controllers
         {
            
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
+
             var user2 = ViewBag.UserName;
             var upd = (from Reservation in _context.Reservations
                        where Reservation.Username == "mlklk-22" && Reservation.Hallnumber == id
@@ -92,13 +93,15 @@ namespace FirstProject.Controllers
             foreach (var item in upd)
             {
                 n = (int)item.Price;
-               
-                item.Status = "Available";
-                foreach (var item2 in _context.Visas.Where(x => x.Username == item.Username))
-                {
-                    r = Convert.ToInt32(item2.Pocket) + n;
-                    item2.Pocket = Convert.ToString(r); item.Username = "mlklk-22";
-                }
+              
+                    item.Status = "Available";
+                    foreach (var item2 in _context.Visas.Where(x => x.Username == item.Username))
+                    {
+                        r = Convert.ToInt32(item2.Pocket) + n;
+                        item2.Pocket = Convert.ToString(r);
+                        item.Username = "mlklk-22";
+                    }
+              
             }
 
             _context.SaveChanges();
@@ -124,20 +127,30 @@ namespace FirstProject.Controllers
             foreach (var item in upd)
             {
                 n = (int)item.Price;
-
-                item.Status = "Available";
-                foreach (var item2 in _context.Visas.Where(x => x.Username == item.Username))
+                if (item.Status == "Pending")
                 {
-                    r = Convert.ToInt32(item2.Pocket) + n;
-                    item2.Pocket = Convert.ToString(r);
-                    item.Username = "mlklk-22";
+                    item.Status = "Available";
+                    foreach (var item2 in _context.Visas.Where(x => x.Username == item.Username))
+                    {
+                        item.Username = "mlklk-22";
+                    }
+                }
+                else
+                {
+                    item.Status = "Available";
+                    foreach (var item2 in _context.Visas.Where(x => x.Username == item.Username))
+                    {
+                        r = Convert.ToInt32(item2.Pocket) + n;
+                        item2.Pocket = Convert.ToString(r);
+                        item.Username = "mlklk-22";
+                    }
                 }
             }
 
             _context.SaveChanges();
             ViewBag.hallNum = HttpContext.Session.GetString("hallNum");
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
-            return RedirectToAction("ReqRes", "Visas    ");
+            return RedirectToAction("ReqRes", "Visas");
         }
         public IActionResult ReqRes()
         {
