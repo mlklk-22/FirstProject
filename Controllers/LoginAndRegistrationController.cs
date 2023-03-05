@@ -55,8 +55,10 @@ namespace FirstProject.Controllers
 
                 }
             }
+          
+                            return View();
 
-            return View();
+       
         }
 
         public IActionResult LogOut([Bind("Username, Password")] Login login)
