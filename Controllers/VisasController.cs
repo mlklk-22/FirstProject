@@ -20,113 +20,118 @@ namespace FirstProject.Controllers
         }
         public IActionResult Agreement(decimal id)
         {
-           
+
+            #region Session For Username and hallNum
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
-
-            var user2 = ViewBag.UserName;
-            var upd = (from Reservation in _context.Reservations
-                       where Reservation.Username == "mlklk-22" && Reservation.Hallnumber == id
-                       select Reservation).ToList();
-            
-            var r =0;
-            var n = 0;
-
-            foreach (var item in upd)
-            {   
-                n = (int)item.Price ;
-                item.Username = user2;
-                item.Status = "Pending";
-                //foreach (var item2 in _context.Visas.Where(x => x.Username == item.Username))
-                //{
-                //    r = Convert.ToInt32(item2.Pocket) - n;
-                //    item2.Pocket = Convert.ToString(r);
-                //}
-            }
-            
-            _context.SaveChanges();
             ViewBag.hallNum = HttpContext.Session.GetString("hallNum");
-            ViewBag.UserName = HttpContext.Session.GetString("UserName");
-            return View(upd);
+            #endregion
+
+            #region Reservation By UserName and Id
+            var ReservationAdmin = (from Reservation in _context.Reservations
+                                    where Reservation.Username == "mlklk-22" && Reservation.Hallnumber == id
+                                    select Reservation).ToList(); 
+            #endregion
+
+            #region Update Status and Owner 
+            foreach (var item in ReservationAdmin)
+            {
+                item.Username = ViewBag.UserName;
+                item.Status = "Pending";
+            } 
+            #endregion
+
+            _context.SaveChanges();
+            return View(ReservationAdmin);
         }
         public IActionResult AgreementAcc(decimal id)
         {
 
+            #region Session Of Username and hall number
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
-            var user2 = ViewBag.UserName;
-            var upd = (from Reservation in _context.Reservations
-                       where Reservation.Status == "Pending" && Reservation.Hallnumber == id
-                       select Reservation).ToList();
+            ViewBag.UserName = HttpContext.Session.GetString("UserName");
+            #endregion            var Username = ViewBag.UserName;
 
-            var r = 0;
-            var n = 0;
+            #region Reservation by Status and Hall Number
+            var ReservationsWhenPending = (from Reservation in _context.Reservations
+                                           where Reservation.Status == "Pending" && Reservation.Hallnumber == id
+                                           select Reservation).ToList();
+            #endregion
 
-            foreach (var item in upd)
+            #region Get visa and Reservation of User to Update Status and Pocket
+            var UpdatePocket = 0;
+            var price = 0;
+            foreach (var Reservationcol in ReservationsWhenPending)
             {
-                n = (int)item.Price;
-                item.Username = user2;
-                item.Status = "Full";
-                foreach (var item2 in _context.Visas.Where(x => x.Username == item.Username))
+                price = (int)Reservationcol.Price;
+                Reservationcol.Username = ViewBag.UserName;
+                Reservationcol.Status = "Full";
+                foreach (var Visacol in _context.Visas.Where(x => x.Username == Reservationcol.Username))
                 {
-                    r = Convert.ToInt32(item2.Pocket) - n;
-                    item2.Pocket = Convert.ToString(r);
+                    UpdatePocket = Convert.ToInt32(Visacol.Pocket) - price;
+                    Visacol.Pocket = Convert.ToString(UpdatePocket);
                 }
-            }
+            } 
+            #endregion
 
             _context.SaveChanges();
-            ViewBag.hallNum = HttpContext.Session.GetString("hallNum");
-            ViewBag.UserName = HttpContext.Session.GetString("UserName");
             return RedirectToAction("ReqRes", "Visas");
         }
         public IActionResult DisAgreement(decimal id)
         {
 
+            #region Session Of Username And Hall Num
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
-            var user2 = ViewBag.UserName;
-            
-            
-            var upd = (from Reservation in _context.Reservations
-                       where  Reservation.Hallnumber == id
-                       select Reservation).ToList();
+            ViewBag.hallNum = HttpContext.Session.GetString("hallNum");
+            #endregion
 
-            var r = 0;
-            var n = 0;
-            foreach (var item in upd)
+            #region Reservation By Id
+            var ReservationById = (from Reservation in _context.Reservations
+                                   where Reservation.Hallnumber == id
+                                   select Reservation).ToList(); 
+            #endregion
+
+            #region Get visa and Reservation of User to Update Status and Pocket
+            var UpdatePocket = 0;
+            var Price = 0;
+           
+            foreach (var ReservationCol in ReservationById)
             {
-                n = (int)item.Price;
-              
-                    item.Status = "Available";
-                    foreach (var item2 in _context.Visas.Where(x => x.Username == item.Username))
-                    {
-                        r = Convert.ToInt32(item2.Pocket) + n;
-                        item2.Pocket = Convert.ToString(r);
-                        item.Username = "mlklk-22";
-                    }
-              
-            }
+                Price = (int)ReservationCol.Price;
+
+                ReservationCol.Status = "Available";
+                foreach (var VisaCol in _context.Visas.Where(col => col.Username == ReservationCol.Username))
+                {
+                    UpdatePocket = Convert.ToInt32(VisaCol.Pocket) + Price;
+                    VisaCol.Pocket = Convert.ToString(UpdatePocket);
+                    ReservationCol.Username = "mlklk-22";
+                }
+
+            } 
+            #endregion
 
             _context.SaveChanges();
-            ViewBag.hallNum = HttpContext.Session.GetString("hallNum");
-            ViewBag.UserName = HttpContext.Session.GetString("UserName");
-            return View(upd);
+            return View(ReservationById);
         }
-
         public IActionResult DisAgreeAdmin(decimal id)
         {
 
+            #region Session Of Username
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
-            var user2 = ViewBag.UserName;
 
+            #endregion
 
-            var upd = (from Reservation in _context.Reservations
-                       where Reservation.Hallnumber == id
-                       select Reservation).ToList();
+            #region Reservatoin By Id
+            var ReservationById = (from Reservation in _context.Reservations
+                                   where Reservation.Hallnumber == id
+                                   select Reservation).ToList();
+            #endregion
 
-            var r = 0;
-            var n = 0;
-            
-            foreach (var item in upd)
+            #region Get visa and Reservation of User to Update Status and Pocket
+            var UpdatePocket = 0;
+            var price = 0;
+            foreach (var item in ReservationById)
             {
-                n = (int)item.Price;
+                price = (int)item.Price;
                 if (item.Status == "Pending")
                 {
                     item.Status = "Available";
@@ -140,61 +145,70 @@ namespace FirstProject.Controllers
                     item.Status = "Available";
                     foreach (var item2 in _context.Visas.Where(x => x.Username == item.Username))
                     {
-                        r = Convert.ToInt32(item2.Pocket) + n;
-                        item2.Pocket = Convert.ToString(r);
+                        UpdatePocket = Convert.ToInt32(item2.Pocket) + price;
+                        item2.Pocket = Convert.ToString(UpdatePocket);
                         item.Username = "mlklk-22";
                     }
                 }
-            }
+            } 
+            #endregion
 
             _context.SaveChanges();
-            ViewBag.hallNum = HttpContext.Session.GetString("hallNum");
-            ViewBag.UserName = HttpContext.Session.GetString("UserName");
             return RedirectToAction("ReqRes", "Visas");
         }
         public IActionResult ReqRes()
         {
-            //var upd = (from Reservation in _context.Reservations
-            //           where Reservation.Username == user
-            //           select Reservation).ToList();
-            //foreach (var item in upd)
-            //{
-            //    item.Username = user;
-            //}
+            #region Session For AdminName, FirstName, LastName and UserName
             ViewBag.AdminName = HttpContext.Session.GetString("AdminName");
             ViewBag.FirstName = HttpContext.Session.GetString("FirstName");
             ViewBag.LastName = HttpContext.Session.GetString("LastName");
-            _context.SaveChanges();
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
-            var modelContext = _context.Reservations.Where(x => x.Username != null && x.Username != "mlklk-22");
-            return View(modelContext);
+            #endregion
+
+            #region List Of Users
+            var Users = _context.Reservations.Where(x => x.Username != null && x.Username != "mlklk-22");
+
+            #endregion           
+
+            return View(Users);
         }
         public IActionResult MyVisa()
         {
-           ViewBag.UserName = HttpContext.Session.GetString("UserName");
-            var modelContext = _context.Visas;  
+            #region Session For User
+            ViewBag.UserName = HttpContext.Session.GetString("UserName");
 
-            return View(modelContext);
+            #endregion
+
+            #region All Visas
+            var AllVisas = _context.Visas;
+
+            #endregion
+
+            return View(AllVisas);
         }
-
         public IActionResult ReqSub()
         {
+            #region Session For CardNumber, And UserName
             ViewBag.cardNum = HttpContext.Session.GetString("cardNum");
-            ViewBag.cardNum = HttpContext.Session.GetString("cardNum");
-            ViewBag.UserName = HttpContext.Session.GetString("UserName");
+            ViewBag.UserName = HttpContext.Session.GetString("UserName"); 
+            #endregion
             return View();
         }
         public IActionResult MyReservations()
         {
+            #region Session For AdminName, FirstName, LastName and UserName
             ViewBag.AdminName = HttpContext.Session.GetString("AdminName");
             ViewBag.FirstName = HttpContext.Session.GetString("FirstName");
             ViewBag.LastName = HttpContext.Session.GetString("LastName");
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
-            var modelContext = _context.Reservations.Where(x => x.Username != null && x.Username != "mlklk-22");
-            return View(modelContext);
-        }
+            #endregion
 
-        // GET: Visas
+            #region AllUsers
+            var Users = _context.Reservations.Where(x => x.Username != null && x.Username != "mlklk-22");
+            #endregion
+
+            return View(Users);              
+        }
         public async Task<IActionResult> Index()    
         {
             ViewBag.AdminName = HttpContext.Session.GetString("AdminName");
@@ -203,8 +217,6 @@ namespace FirstProject.Controllers
             var modelContext = _context.Visas.Include(v => v.Role).Include(v => v.UsernameNavigation);
             return View(await modelContext.ToListAsync());
         }
-
-        // GET: Visas/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -223,8 +235,6 @@ namespace FirstProject.Controllers
 
             return View(visa);
         }
-
-        // GET: Visas/Create
         public IActionResult Create()
         {
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
@@ -233,9 +243,6 @@ namespace FirstProject.Controllers
             return View();
         }
 
-        // POST: Visas/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Firstname,Lastname,Cardnumber,Exp,Thrnum,Pocket,Roleid,Username")] Visa visa)
@@ -254,7 +261,6 @@ namespace FirstProject.Controllers
             ViewData["Username"] = new SelectList(_context.Logins, "Username", "Username", HttpContext.Session.GetString("UserName"));
             return View(visa);
         }
-
        public IActionResult Visa()
         {
             ViewBag.cardNum = HttpContext.Session.GetString("cardNum");
@@ -269,8 +275,6 @@ namespace FirstProject.Controllers
 
             return View();
         }
-
-        // GET: Visas/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -288,9 +292,7 @@ namespace FirstProject.Controllers
             return View(visa);
         }
 
-        // POST: Visas/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Firstname,Lastname,Cardnumber,Exp,Thrnum,Pocket,Roleid,Username")] Visa visa)
@@ -325,7 +327,6 @@ namespace FirstProject.Controllers
             return View(visa);
         }
 
-        // GET: Visas/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -344,8 +345,8 @@ namespace FirstProject.Controllers
 
             return View(visa);
         }
+     
 
-        // POST: Visas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
@@ -355,7 +356,6 @@ namespace FirstProject.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         private bool VisaExists(string id)
         {
             return _context.Visas.Any(e => e.Cardnumber == id);
