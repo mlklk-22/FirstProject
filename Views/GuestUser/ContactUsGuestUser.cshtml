@@ -1,0 +1,153 @@
+﻿@model IEnumerable<FirstProject.Models.Contactu>
+
+@{
+    Layout = "~/Views/Shared/_LayoutGusetUser.cshtml";
+}
+
+
+
+           <br /><br /><br /><br /><br />
+
+<section id="contact" class="contact"> 
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="contact_contant sections">
+                                    <div class="col-sm-6">
+                            @foreach (var item in Model)
+                            {
+                                            <div class="main_contact_info">
+                                                <div class="head_title">
+                                                    <h3>CONTACT INFO</h3>
+                                                    <div class="separator"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="contact_info_content">
+                                                        <div class="col-sm-12">
+                                                            <div class="single_contact_info">
+                                                                <div class="single_info_icon">
+                                                                    <i class="fa fa-home"></i>
+                                                                </div>
+                                                                <div class="single_info_text">
+                                                                    <h3> @Html.DisplayFor(modelItem => item.Visittitle)</h3>
+                                                                    <p>@Html.DisplayFor(modelItem => item.Descriptionvisit)</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12">
+                                                            <div class="single_contact_info">
+                                                                <div class="single_info_icon">
+                                                                    <i class="fa fa-envelope-o"></i>
+                                                                </div>
+                                                                <div class="single_info_text">
+                                                                    <h3>MAIL US</h3>
+                                                                    <p> @Html.DisplayFor(modelItem => item.Descriptionmail)</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12">
+                                                            <div class="single_contact_info">
+                                                                <div class="single_info_icon">
+                                                                    <i class="fa fa-mobile"></i>
+                                                                </div>
+                                                                <div class="single_info_text">
+                                                                    <h3> @Html.DisplayFor(modelItem => item.Call)</h3>
+                                                                    <p>@Html.DisplayFor(modelItem => item.Descriptioncall)</p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-12">
+                                                            <div class="single_contact_info">
+                                                                <div class="single_info_icon">
+                                                                    <i class="fa fa-clock-o"></i>
+                                                                </div>
+                                                                <div class="single_info_text">
+                                                                    <h3>@Html.DisplayFor(modelItem => item.Work)</h3>
+                                                                    <p>@Html.DisplayFor(modelItem => item.Descriptionwork)</p>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                            }    
+                                    </div> 
+
+                                    <div class="col-sm-6">
+                                        <div class="head_title">
+                                            <h3>LEAVE MESSAGE</h3>
+                                            <div class="separator"></div>
+                                        </div>
+
+                                        <div class="single_contant_left">
+                                            <form asp-action="AccEm" asp-controller="Reservations" method="get">
+                                                <!--<div class="col-lg-8 col-md-8 col-sm-10 col-lg-offset-2 col-md-offset-2 col-sm-offset-1">-->
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="Firstname" placeholder="First Name" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="LastName" placeholder="Last Name" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <input type="email" class="form-control" name="Email" placeholder="Email" required="">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" name="Subject" placeholder="Subject" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    <textarea class="form-control" name="Message" rows="8" placeholder="Message"></textarea>
+                                                </div>
+
+                                                <div class="">
+                                                    <input style="background:#22394C" type="submit" value="Submit" class="btn">
+
+                                                </div>
+                                                <!--</div>--> 
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+            </section>  <!-- End of contact section -->
+
+@* <section id="maps" class="maps">
+                <div class="map-overlay">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="main_maps text-center">
+                                <div class="col-sm-12 no-padding">
+                                    <div class="map_canvas_icon">
+                                        <i class="fa fa-map-marker" onClick="showmap()"></i>
+                                        <h2 onClick="showmap()">FIND US ON GOOGLE MAP</h2>
+                                    </div>
+                                    <div id="map_canvas"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section*@>
