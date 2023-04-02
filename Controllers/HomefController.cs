@@ -9,6 +9,7 @@ using FirstProject.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using System.Diagnostics;
 
 namespace FirstProject.Controllers
 {
@@ -31,8 +32,57 @@ namespace FirstProject.Controllers
             var modelContext = _context.Homes.Include(h => h.Role).Include(h => h.UsernameNavigation);
             return View(await modelContext.ToListAsync());
         }
+        public IActionResult Dashboard()
+        {
+            int countBook = 0;
+            int countNotBook = 0;
+            int NumberOfUsers = 0;
+            int NumberOfTestmonial = 0;
 
-        public async Task<IActionResult> HomeUser()
+            var bAndNReserve = _context.Reservations;
+            foreach (var item in bAndNReserve)
+            {
+                if (item.Status == "Full")
+                    countBook++;
+                else
+                    countNotBook++;
+            }
+            var numOfUser = _context.Logins;
+            foreach (var item in numOfUser)
+            {
+                if (item.Roleid == 2)
+                    NumberOfUsers++;
+            }
+            var numOfTestmonial = _context.Testmonials;
+            foreach (var item in numOfTestmonial)
+            {
+                if (item.Status == "Accept")
+                    NumberOfTestmonial++;
+            }
+            var cate = _context.Categories.Select(x => x.Categoryname).ToList();
+            var reserve = _context.Reservations;
+            List<int> data = new List<int>();
+            foreach (var item in cate)
+            {
+                data.Add(reserve.Count(x => x.CategoryNavigation.Categoryname == item));
+            }
+            ViewBag.Categ = cate;
+            ViewBag.pr = data;
+            ViewBag.countBook = countBook;
+            ViewBag.countNotBook = countNotBook;
+            ViewBag.NumberOfUsers = NumberOfUsers;
+            ViewBag.testmonials = NumberOfTestmonial;
+            ViewBag.AdminName = HttpContext.Session.GetString("AdminName");
+            ViewBag.FirstName = HttpContext.Session.GetString("FirstName");
+            ViewBag.LastName = HttpContext.Session.GetString("LastName");
+            var home = _context.Homes.ToList();
+            var contact = _context.Contactus.ToList();
+            var about = _context.Aboutus.ToList();
+            var manangeBase = Tuple.Create<IEnumerable<Home>, IEnumerable<Contactu>, IEnumerable<Aboutu>>(home, contact, about);
+            return View(manangeBase);
+        }
+
+public async Task<IActionResult> HomeUser()
         {
              int countBook = 0;
             int countNotBook = 0;

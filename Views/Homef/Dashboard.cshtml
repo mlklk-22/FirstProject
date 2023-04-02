@@ -1,0 +1,504 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutDashboard2.cshtml";
+    var name = ViewBag.AdminName;    
+}
+@model Tuple<IEnumerable<FirstProject.Models.Home>, IEnumerable<FirstProject.Models.Contactu>, IEnumerable<FirstProject.Models.Aboutu>>
+
+
+       <div>
+  <canvas id="myChart"></canvas>
+</div>
+ 
+<div class="container">
+   @* <div class="row">
+  
+<div class="col-lg-3 col-sm-3">
+    <div class="card-box  text-dark">
+    <div class="inner">
+        <h3>@ViewBag.NumberOfUsers</h3>
+        <p>Users</p>
+    </div>
+    <div class="icon">
+        <i class="fa fa-users" aria-hidden="true"></i>
+    </div>
+    </div>
+</div>
+
+<div class="col-lg-3 col-sm-3">
+    <div class="card-box  text-dark">
+    <div class="inner">
+        <h3>@ViewBag.testmonials</h3>
+        <p>Testmonials</p>
+    </div>
+    <div class="icon">
+        <i class="material-icons" >checklist</i>
+    </div>
+    </div>
+        </div>  
+
+        <div class="col-lg-3 col-sm-3">
+    <div class="card-box  text-dark">
+    <div class="inner">
+        <h3>@ViewBag.countBook</h3>
+        <p>Reserved Rooms</p>
+    </div>
+    <div class="icon">
+        <i class="material-icons" >grading</i>
+    </div>
+    </div>
+        </div> 
+        <div class="col-lg-3 col-sm-3">
+    <div class="card-box  text-dark">
+    <div class="inner">
+        <h3>@ViewBag.countNotBook</h3>
+        <p>Unreserved Rooms</p>
+    </div>
+    <div class="icon">
+        <i class="material-icons" >rule</i>
+    </div>
+    </div>
+        </div> 
+    </div>*@
+     <div class="row justify-content-center">
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Users</h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text-success">@ViewBag.NumberOfUsers</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Testmonials</h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash2"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text-purple">@ViewBag.testmonials</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Booked Room</h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash3"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text-info">@ViewBag.countBook</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Unbooked Room</h3>
+                            <ul class="list-inline two-part d-flex align-items-center mb-0">
+                                <li>
+                                    <div id="sparklinedash3"><canvas width="67" height="30"
+                                            style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    </div>
+                                </li>
+                                <li class="ms-auto"><span class="counter text-info">@ViewBag.countNotBook</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+@*
+    <br /> <br/>
+ @if (Model.Item1 != null)
+        {
+
+    @foreach (var item in Model.Item1)
+    {
+            <div class="row">
+
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header" style="background-color:#FBCEB1;">
+                            <h4 class="card-title" >Home Page</h4>
+                            <p class="card-category"></p>
+
+                        </div>
+                    </div>
+
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+ <thead>
+        <tr>
+            <th>
+                
+                    Titleslider1
+            </th>
+            <th>
+                Descriptionslider1
+            </th>
+            <th>
+                Titleslider2
+            </th>
+            <th>
+                Descriptionslider2
+            </th>
+            <th>
+                Titleslider3
+            </th>
+            <th>
+                Descriptionslider3
+            </th>
+            <th>
+                Video
+            </th>
+            <th>
+                Titleservice1
+            </th>
+            <th>
+                Descriptionservice1
+            </th>
+            <th>
+                Titleservice2
+            </th>
+            <th>
+                Descriptionservice2
+            </th>
+            <th>
+                Titleservice3
+            </th>
+            <th>
+                Descriptionservice3
+            </th>
+            
+        </tr>
+    </thead>
+ <tbody class="text-warning">
+                                <tr>
+                                     <td>
+                @item.Titleslider1
+            </td>
+            <td>
+                @item.Descriptionslider1
+            </td>
+            <td>
+                @item.Titleslider2
+            </td>
+            <td>
+                @item.Descriptionslider2
+            </td>
+            <td>
+                @item.Titleslider3
+            </td>
+            <td>
+                @item.Descriptionslider3
+            </td>
+            <td>
+                @item.Video
+            </td>
+            <td>
+                @item.Titleservice1
+            </td>
+            <td>
+                @item.Descriptionservice1
+            </td>
+            <td>
+                @item.Titleservice2
+            </td>
+            <td>
+                @item.Descriptionservice2
+            </td>
+            <td>
+                @item.Titleservice3
+            </td>
+            <td>
+                @item.Descriptionservice3
+            </td>
+            
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+            </div>
+           
+        }
+    }
+
+
+
+    @if (Model.Item2 != null)
+        {
+
+    @foreach (var item in Model.Item2)
+    {
+            <div class="row">
+
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header" style="background-color:#FBCEB1;">
+                            <h4 class="card-title">Contact Page</h4>
+                            <p class="card-category"></p>
+
+                        </div>
+                    </div>
+
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+ <thead>
+         <tr>
+            <th>
+                Visittitle
+            </th>
+            <th>
+                Descriptionvisit
+            </th>
+            <th>
+                Descriptionmail
+            </th>
+            <th>
+                Call
+            </th>
+            <th>
+                Descriptioncall
+            </th>
+            <th>
+                Work
+            </th>
+            <th>
+                Descriptionwork
+            </th>
+            
+        </tr>
+    </thead>
+            
+ <tbody class="text-warning">
+          <tr>
+            <td>
+                @item.Visittitle
+            </td>
+            <td>
+                @item.Descriptionvisit
+            </td>
+            <td>
+                @item.Descriptionmail
+            </td>
+            <td>
+                @item.Call
+            </td>
+            <td>
+                @item.Descriptioncall
+            </td>
+            <td>
+                @item.Work
+            </td>
+            <td>
+                @item.Descriptionwork
+            </td>
+            
+            
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+            </div>
+           
+        }
+    }
+
+     @if (Model.Item3 != null)
+        {
+
+    @foreach (var item in Model.Item3)
+    {
+            <div class="row">
+
+                <div class="col">
+                    <div class="card">
+                        <div class="card-header" style="background-color:#FBCEB1;">
+                            <h4 class="card-title">About Page</h4>
+                            <p class="card-category"></p>
+
+                        </div>
+                    </div>
+
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+ <thead>
+         <tr>
+            <th>
+                Title1
+            </th>
+            <th>
+                Descriptiontitle1
+            </th>
+            <th>
+                Title2
+            </th>
+            <th>
+                Descriptiontitle2
+            </th>
+            <th>
+                Title3
+            </th>
+            <th>
+                Descriptiontitle3
+            </th>
+            <th>
+                Title4
+            </th>
+            <th>
+                Descriptiontitle4
+            </th>
+            <th>
+                Titlechose1
+            </th>
+            <th>
+                Descriptionchose1
+            </th>
+            <th>
+                Titlechose2
+            </th>
+            <th>
+                Descriptionchose2
+            </th>
+            <th>
+                Titlechose3
+            </th>
+            <th>
+                Descriptionchose3
+            </th>
+            <th>
+                Titlechose4
+            </th>
+            <th>
+                Descriptionchose4
+            </th>
+            <th>
+                Titlechose5
+            </th>
+            <th>
+                Descriptionchose5
+            </th>
+            <th>
+                Choseimage
+            </th>
+           
+        </tr>
+    </thead>
+            
+ <tbody class="text-warning">
+           <tr>
+            <td>
+                @item.Title1
+            </td>
+            <td>
+                @item.Descriptiontitle1
+            </td>
+            <td>
+                @item.Title2
+            </td>
+            <td>
+                @item.Descriptiontitle2
+            </td>
+            <td>
+                @item.Title3
+            </td>
+            <td>
+                @item.Descriptiontitle3
+            </td>
+            <td>
+                @item.Title4
+            </td>
+            <td>
+                @item.Descriptiontitle4
+            </td>
+            <td>
+                @item.Titlechose1
+            </td>
+            <td>
+                @item.Descriptionchose1
+            </td>
+            <td>
+                @item.Titlechose2
+            </td>
+            <td>
+                @item.Descriptionchose2
+            </td>
+            <td>
+                @item.Titlechose3
+            </td>
+            <td>
+                @item.Descriptionchose3
+            </td>
+            <td>
+                @item.Titlechose4
+            </td>
+            <td>
+                @item.Descriptionchose4
+            </td>
+            <td>
+                @item.Titlechose5
+            </td>
+            <td>
+                @item.Descriptionchose5
+            </td>
+            <td>
+                @item.Choseimage
+            </td>
+            
+            
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+
+            </div>
+           
+        }
+    }
+    </div>*@
+
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  var x = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(@ViewBag.Categ))
+  var y = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(@ViewBag.pr))
+  const data = {
+    labels: x,
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: 'rgb(248,142,54)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: y,
+    }]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {}
+  };
+</script>
+<script>
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>

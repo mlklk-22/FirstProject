@@ -41,7 +41,7 @@ namespace FirstProject.Controllers
                         HttpContext.Session.SetString("AdminName", auth.Username);
                         HttpContext.Session.SetString("FirstName", auth.Firstname);
                         HttpContext.Session.SetString("LastName", auth.Lastname);
-                        return RedirectToAction("Dashboard", "Home");
+                        return RedirectToAction("Dashboard", "Homef");
                         
 
                         case 2:
