@@ -48,9 +48,10 @@ namespace FirstProject.Controllers
 
             #region Session Of Username and hall number
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
-            ViewBag.UserName = HttpContext.Session.GetString("UserName");
-            #endregion            var Username = ViewBag.UserName;
-
+            ViewBag.UserName = HttpContext.Session.GetString("UserName"); 
+            var Username = ViewBag.UserName;
+            #endregion          
+           
             #region Reservation by Status and Hall Number
             var ReservationsWhenPending = (from Reservation in _context.Reservations
                                            where Reservation.Status == "Pending" && Reservation.Hallnumber == id

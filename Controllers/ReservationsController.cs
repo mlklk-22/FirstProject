@@ -92,7 +92,7 @@ namespace FirstProject.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            ViewBag.UserName = HttpContext.Session.GetString("UserName");
+            ViewBag.AdminName = HttpContext.Session.GetString("AdminName");
             var modelContext = _context.Reservations.Include(r => r.CategoryNavigation).Include(r => r.UsernameNavigation);
             return View(modelContext);
         }
@@ -100,7 +100,7 @@ namespace FirstProject.Controllers
         // GET: Reservations/Details/5
         public async Task<IActionResult> Details(decimal? id)
         {
-            ViewBag.UserName = HttpContext.Session.GetString("UserName");
+            ViewBag.AdminName = HttpContext.Session.GetString("AdminName");
             
 
             if (id == null)

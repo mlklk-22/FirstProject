@@ -91,7 +91,7 @@ namespace FirstProject.Controllers
         // GET: Logins/Details/5
         public async Task<IActionResult> Details(string id)
         {
-            ViewBag.UserName = HttpContext.Session.GetString("UserName");
+            ViewBag.UserName = HttpContext.Session.GetString("AdminName");
 
             if (id == null)
             {
@@ -137,6 +137,7 @@ namespace FirstProject.Controllers
         // GET: Logins/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
+            ViewBag.AdminName = HttpContext.Session.GetString("AdminName");
             if (id == null)
             {
                 return NotFound();
@@ -159,7 +160,8 @@ namespace FirstProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Username,Firstname,Lastname,Phonenumber,Email,Password,Roleid")] Login login)
         {
-            HttpContext.Session.GetString("UserName");
+
+            ViewBag.AdminName = HttpContext.Session.GetString("AdminName");
             if (id != login.Username)
             {
                 return NotFound();
