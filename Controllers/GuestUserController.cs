@@ -19,6 +19,10 @@ namespace FirstProject.Controllers
         }
         public async Task<IActionResult> HomeGuestUser()
         {
+            ViewBag.NoUsers = _context.Logins.Where(x => x.Roleid == 2).Count();
+            ViewBag.NoBook = _context.Reservations.Where(x => x.Status == status.Full.ToString()).Count();
+            ViewBag.NoUnBook = _context.Reservations.Where(x => x.Status == status.Available.ToString()).Count();
+            ViewBag.test = _context.Testmonials.Where(x => x.Status == statusTestmonial.Accept.ToString()).Count();
             var home = _context.Homes.ToList();
             var reserve = _context.Reservations.ToList();
             var manangeBase = Tuple.Create<IEnumerable<Home>, IEnumerable<Reservation>>(home, reserve);
@@ -43,5 +47,16 @@ namespace FirstProject.Controllers
         }
 
 
+    }
+    enum status
+    {
+        Available,
+        Pending,
+        Full
+    }
+    enum statusTestmonial
+    {
+        Accept,
+        Pending
     }
 }

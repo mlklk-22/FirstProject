@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using MailKit.Security;
+using MimeKit.Text;
 
 namespace FirstProject.Controllers
 {
@@ -24,34 +25,71 @@ namespace FirstProject.Controllers
             _context = context;
             this.webHostEnviroment = webHostEnviroment;
         }
-        [HttpGet]
         public IActionResult AccEm()
         {
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
             return View();
         }
 
-        [HttpPost]/*string firstName,*/
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult AccEm(string firstName, string LastName, string Email, string Subject, string Message)
         {
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
-            MimeMessage message = new MimeMessage();
-            MailboxAddress from = new MailboxAddress("mlk", "saba_tradat26@yahoo.com");
-            message.From.Add(from);
-            MailboxAddress to = new MailboxAddress("mlk", "mlkmsbh84@outlook.com");
-            message.To.Add(to);
-            message.Subject = "Reset";
-            BodyBuilder bodyBuilder = new BodyBuilder();
-            bodyBuilder.HtmlBody =
-            "<h1 style=\"color:pink\">Tahaluf elemart</h1>" + "Regards" + "<p>hello</p>";
-            message.Body = bodyBuilder.ToMessageBody();
-            using (var clinte = new SmtpClient())
+            var Username = HttpContext.Session.GetString("UserName");
+            var adminInfo = _context.Logins.Where(x => x.Roleid == 1).FirstOrDefault();
+
+            #region Sending Email To Admin
+            var emaila = new MimeMessage();
+            emaila.From.Add(MailboxAddress.Parse("mlkmsbh84@outlook.com"));
+            emaila.To.Add(MailboxAddress.Parse(adminInfo.Email));
+
+
+
+            emaila.Subject = Subject;
+            emaila.Body = new TextPart(TextFormat.Text)
             {
-                clinte.Connect("smtp.mail.yahoo.com", 465, true);
-                clinte.Authenticate("saba_tradat26@yahoo.com", "gbetdprsqepmofdp");
-                clinte.Send(message);
-                clinte.Disconnect(true);
+                Text = Message
+            };
+
+
+            using (var smtp = new SmtpClient())
+            {
+                smtp.Connect("smtp.outlook.com", 587, SecureSocketOptions.StartTls);
+                smtp.Authenticate("mlkmsbh84@outlook.com", "1234mlok1234");
+                smtp.Send(emaila);
+                smtp.Disconnect(true);
             }
+            #endregion
+
+            #region Sending Email To User
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse("mlkmsbh84@outlook.com"));
+            email.To.Add(MailboxAddress.Parse(Email));
+
+
+
+            email.Subject = "Contact Us!";
+            email.Body = new TextPart(TextFormat.Text)
+            {
+                Text = "Ms / Mrs " + firstName + " " + LastName 
+                                                     + " Thank You For Contact Us \n" 
+                                                     + " We Will Response To You As Soon As! \n"
+                                                     + " All Respect \n"
+                                                     + adminInfo.Firstname + " " + adminInfo.Lastname 
+                                                                                        
+            };
+
+
+            using (var smtp = new SmtpClient())
+            {
+                smtp.Connect("smtp.outlook.com", 587, SecureSocketOptions.StartTls);
+                smtp.Authenticate("mlkmsbh84@outlook.com", "1234mlok1234");
+                smtp.Send(email);
+                smtp.Disconnect(true);
+            }
+            #endregion
+
             return View();
 
         }

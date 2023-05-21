@@ -12,6 +12,7 @@ namespace FirstProject.Controllers
 
         public LoginAndRegistrationController(ModelContext context)
         {
+
             _context = context;
         }
         public IActionResult Index()
@@ -28,8 +29,16 @@ namespace FirstProject.Controllers
         {
             return View();
         }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Login([Bind("Username, Password")] Login login)
         {
+            //row carry all data that achive the condition......
             var auth = _context.Logins.Where(x => x.Username ==  login.Username && x.Password == login.Password).SingleOrDefault();
             if (auth != null)
             {           
@@ -55,8 +64,12 @@ namespace FirstProject.Controllers
 
                 }
             }
+            else
+            {
+                Response.WriteAsync("<script>alert('Try Again Username or Password incorect')</script>");
+            }
           
-                            return View();
+            return View();
 
        
         }

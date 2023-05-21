@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using FirstProject.Models;
 using Microsoft.AspNetCore.Http;
+using MailKit.Security;
+using MimeKit.Text;
+using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace FirstProject.Controllers
 {
@@ -49,9 +53,10 @@ namespace FirstProject.Controllers
             #region Session Of Username and hall number
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
             ViewBag.UserName = HttpContext.Session.GetString("UserName"); 
-            var Username = ViewBag.UserName;
-            #endregion          
-           
+            var Username = HttpContext.Session.GetString("UserName");
+            #endregion
+
+            var UserInfo = _context.Logins.Where(x => x.Username == Username).FirstOrDefault(); 
             #region Reservation by Status and Hall Number
             var ReservationsWhenPending = (from Reservation in _context.Reservations
                                            where Reservation.Status == "Pending" && Reservation.Hallnumber == id
@@ -71,10 +76,41 @@ namespace FirstProject.Controllers
                     UpdatePocket = Convert.ToInt32(Visacol.Pocket) - price;
                     Visacol.Pocket = Convert.ToString(UpdatePocket);
                 }
-            } 
+            }
+            var hallInfo = ReservationsWhenPending.FirstOrDefault(x => x.Username == Username);
+            var adminInfo = _context.Logins.Where(x => x.Roleid == 1).FirstOrDefault();
             #endregion
 
             _context.SaveChanges();
+
+            #region Sending Email To User
+            var email = new MimeMessage();
+            email.From.Add(MailboxAddress.Parse("mlkmsbh84@outlook.com"));
+            email.To.Add(MailboxAddress.Parse(UserInfo.Email));
+
+
+
+            email.Subject = "New Account :)";
+            email.Body = new TextPart(TextFormat.Text)
+            {
+                Text = "Ms / Mrs " + UserInfo.Firstname + " " + UserInfo.Lastname
+                                                     + " Your Reservation is Accepted \n"
+                                                     + "In "+ hallInfo.Place  +  " Have a fun for easily Services! \n"
+                                                     + "With Price " + hallInfo.Price + " Hall Reservation\n"
+                                                     + "All Respect Hall Reservation\n"
+                                                     + "With all love " + adminInfo.Firstname + " " + adminInfo.Lastname
+
+            };
+
+
+            using (var smtp = new SmtpClient())
+            {
+                smtp.Connect("smtp.outlook.com", 587, SecureSocketOptions.StartTls);
+                smtp.Authenticate("mlkmsbh84@outlook.com", "1234mlok1234");
+                smtp.Send(email);
+                smtp.Disconnect(true);
+            }
+            #endregion
             return RedirectToAction("ReqRes", "Visas");
         }
         public IActionResult DisAgreement(decimal id)
