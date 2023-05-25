@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 
 namespace FirstProject.Controllers
-{
+{// Abd
     public class AboutusController : Controller
     {
         private readonly ModelContext _context;
