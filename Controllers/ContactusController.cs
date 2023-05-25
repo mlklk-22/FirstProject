@@ -18,8 +18,6 @@ namespace FirstProject.Controllers
         {
             _context = context;
         }
-
-        // GET: Contactus
         public async Task<IActionResult> Index()
         {
             ViewBag.AdminName = HttpContext.Session.GetString("AdminName");
@@ -37,7 +35,6 @@ namespace FirstProject.Controllers
             var modelContext = _context.Contactus.Include(c => c.Role).Include(c => c.UsernameNavigation);
             return View(await modelContext.ToListAsync());
         }
-        // GET: Contactus/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -57,7 +54,6 @@ namespace FirstProject.Controllers
             return View(contactu);
         }
 
-        // GET: Contactus/Create
         public IActionResult Create()
         {
             ViewData["Roleid"] = new SelectList(_context.Roles, "Roleid", "Rolename");
@@ -65,9 +61,6 @@ namespace FirstProject.Controllers
             return View();
         }
 
-        // POST: Contactus/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Visittitle,Descriptionvisit,Mailtitle,Descriptionmail,Call,Descriptioncall,Work,Descriptionwork,Roleid,Username")] Contactu contactu)
@@ -82,8 +75,7 @@ namespace FirstProject.Controllers
             ViewData["Username"] = new SelectList(_context.Logins, "Username", "Username", contactu.Username);
             return View(contactu);
         }
-
-        // GET: Contactus/Edit/5
+ 
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -100,10 +92,7 @@ namespace FirstProject.Controllers
             ViewData["Username"] = new SelectList(_context.Logins, "Username", "Username", contactu.Username);
             return View(contactu);
         }
-
-        // POST: Contactus/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+ 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Visittitle,Descriptionvisit,Mailtitle,Descriptionmail,Call,Descriptioncall,Work,Descriptionwork,Roleid,Username")] Contactu contactu)
@@ -138,7 +127,6 @@ namespace FirstProject.Controllers
             return View(contactu);
         }
 
-        // GET: Contactus/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -158,7 +146,6 @@ namespace FirstProject.Controllers
             return View(contactu);
         }
 
-        // POST: Contactus/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)

@@ -18,8 +18,6 @@ namespace FirstProject.Controllers
         {
             _context = context;
         }
-
-        // GET: Testmonials
         public async Task<IActionResult> Index()
         {
             ViewBag.AdminName = HttpContext.Session.GetString("AdminName");
@@ -28,7 +26,6 @@ namespace FirstProject.Controllers
             var modelContext = _context.Testmonials.Include(t => t.Role).Include(t => t.UsernameNavigation);
             return View(await modelContext.ToListAsync());
         }
-
         public async Task<IActionResult> TestmonialUser()
         {
             ViewBag.cardNum = HttpContext.Session.GetString("cardNum");
@@ -36,9 +33,6 @@ namespace FirstProject.Controllers
             var modelContext = _context.Testmonials.Include(t => t.Role).Include(t => t.UsernameNavigation);
             return View(await modelContext.ToListAsync());
         }
-
-
-        // GET: Testmonials/Details/5
         public async Task<IActionResult> Details(decimal? id)
         {
             if (id == null)
@@ -57,8 +51,6 @@ namespace FirstProject.Controllers
 
             return View(testmonial);
         }
-
-        // GET: Testmonials/Create
         public IActionResult Create()
         {
             ViewData["Roleid"] = new SelectList(_context.Roles, "Roleid", "Rolename");
@@ -66,9 +58,6 @@ namespace FirstProject.Controllers
             return View();
         }
 
-        // POST: Testmonials/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Firstname,Lastname,Message,Status,Roleid,Username,Testmonialid")] Testmonial testmonial, string FirstName, string LastName, string Message)
@@ -91,10 +80,6 @@ namespace FirstProject.Controllers
            
             return View(testmonial);
         }
-
-
-
-        // GET: Testmonials/Edit/5
         public async Task<IActionResult> Edit(decimal? id)
         {
             if (id == null)
@@ -112,9 +97,6 @@ namespace FirstProject.Controllers
             return View(testmonial);
         }
 
-        // POST: Testmonials/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(decimal id, [Bind("Firstname,Lastname,Message,Status,Roleid,Username,Testmonialid")] Testmonial testmonial)
@@ -148,8 +130,6 @@ namespace FirstProject.Controllers
             ViewData["Username"] = new SelectList(_context.Logins, "Username", "Username", testmonial.Username);
             return View(testmonial);
         }
-
-        // GET: Testmonials/Delete/5
         public async Task<IActionResult> Delete(decimal? id)
         {
             if (id == null)
@@ -169,7 +149,6 @@ namespace FirstProject.Controllers
             return View(testmonial);
         }
 
-        // POST: Testmonials/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(decimal id)

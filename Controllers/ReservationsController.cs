@@ -95,7 +95,6 @@ namespace FirstProject.Controllers
         }
 
 
-    // GET: Reservations
     public async Task<IActionResult> Index(DateTime? startDate, DateTime? endDate)
         {
             ViewBag.AdminName = HttpContext.Session.GetString("AdminName");
@@ -135,7 +134,6 @@ namespace FirstProject.Controllers
             return View(modelContext);
         }
 
-        // GET: Reservations/Details/5
         public async Task<IActionResult> Details(decimal? id)
         {
             ViewBag.AdminName = HttpContext.Session.GetString("AdminName");
@@ -158,7 +156,6 @@ namespace FirstProject.Controllers
             return View(reservation);
         }
 
-        // GET: Reservations/Create
         public IActionResult Create()
         {
             ViewData["Categoryid"] = new SelectList(_context.Categories, "Categoryid", "Categoryname");
@@ -194,7 +191,6 @@ namespace FirstProject.Controllers
             return View(reservation);
         }
 
-        // GET: Reservations/Edit/5
         public async Task<IActionResult> Edit(decimal? id)
         {
             if (id == null)
@@ -268,7 +264,6 @@ namespace FirstProject.Controllers
             return View(reservation);
         }
 
-        // GET: Reservations/Delete/5
         public async Task<IActionResult> Delete(decimal? id)
         {
             if (id == null)
@@ -288,7 +283,6 @@ namespace FirstProject.Controllers
             return View(reservation);
         }
 
-        // POST: Reservations/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(decimal id)
@@ -305,7 +299,7 @@ namespace FirstProject.Controllers
             return _context.Reservations.Any(e => e.Hallnumber == id);
         }
 
-[HttpPost]
+        [HttpPost]
         public async Task<IActionResult> Search(string place, string city)
         {
             ViewBag.cardNum = HttpContext.Session.GetString("cardNum");

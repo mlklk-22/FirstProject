@@ -23,7 +23,6 @@ namespace FirstProject.Controllers
             this.webHostEnviroment = webHostEnviroment;
         }
 
-        // GET: Homef
         public async Task<IActionResult> Index()
         {
             ViewBag.AdminName = HttpContext.Session.GetString("AdminName");
@@ -81,8 +80,7 @@ namespace FirstProject.Controllers
             var manangeBase = Tuple.Create<IEnumerable<Home>, IEnumerable<Contactu>, IEnumerable<Aboutu>>(home, contact, about);
             return View(manangeBase);
         }
-
-public async Task<IActionResult> HomeUser()
+        public async Task<IActionResult> HomeUser()
         {
              int countBook = 0;
             int countNotBook = 0;
@@ -115,8 +113,6 @@ public async Task<IActionResult> HomeUser()
             var modelContext = _context.Homes.Include(h => h.Role).Include(h => h.UsernameNavigation);
             return View(manangeBase);
         }
-
-        // GET: Homef/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -135,8 +131,6 @@ public async Task<IActionResult> HomeUser()
 
             return View(home);
         }
-
-        // GET: Homef/Create
         public IActionResult Create()
         {
             ViewData["Roleid"] = new SelectList(_context.Roles, "Roleid", "Rolename");
@@ -144,9 +138,6 @@ public async Task<IActionResult> HomeUser()
             return View();
         }
 
-        // POST: Homef/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Titleslider1,Descriptionslider1,Titleslider2,Descriptionslider2,Titleslider3,Descriptionslider3,Sliderimage,Video,Titleservice1,Descriptionservice1,Titleservice2,Descriptionservice2,Titleservice3,Descriptionservice3,Roleid,Username, ImageFile")] Home home)
@@ -171,8 +162,6 @@ public async Task<IActionResult> HomeUser()
             ViewData["Username"] = new SelectList(_context.Logins, "Username", "Username", home.Username);
             return View(home);
         }
-
-        // GET: Homef/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -190,9 +179,6 @@ public async Task<IActionResult> HomeUser()
             return View(home);
         }
 
-        // POST: Homef/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Titleslider1,Descriptionslider1,Titleslider2,Descriptionslider2,Titleslider3,Descriptionslider3,Sliderimage,Video,Titleservice1,Descriptionservice1,Titleservice2,Descriptionservice2,Titleservice3,Descriptionservice3,Roleid,Username, ImageFile")] Home home)
@@ -244,8 +230,6 @@ public async Task<IActionResult> HomeUser()
             ViewData["Username"] = new SelectList(_context.Logins, "Username", "Username", home.Username);
             return View(home);
         }
-
-        // GET: Homef/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -265,7 +249,6 @@ public async Task<IActionResult> HomeUser()
             return View(home);
         }
 
-        // POST: Homef/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
@@ -275,7 +258,6 @@ public async Task<IActionResult> HomeUser()
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
-
         private bool HomeExists(string id)
         {
             return _context.Homes.Any(e => e.Sliderimage == id);

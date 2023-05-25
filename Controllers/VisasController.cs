@@ -30,9 +30,13 @@ namespace FirstProject.Controllers
             ViewBag.hallNum = HttpContext.Session.GetString("hallNum");
             #endregion
 
+            #region Admin Info
+            var AdminInfo = _context.Logins.Where(x => x.Roleid == 1).FirstOrDefault();
+            #endregion
+
             #region Reservation By UserName and Id
             var ReservationAdmin = (from Reservation in _context.Reservations
-                                    where Reservation.Username == "mlklk-22" && Reservation.Hallnumber == id
+                                    where Reservation.Username == AdminInfo.Username && Reservation.Hallnumber == id
                                     select Reservation).ToList(); 
             #endregion
 
@@ -40,7 +44,7 @@ namespace FirstProject.Controllers
             foreach (var item in ReservationAdmin)
             {
                 item.Username = ViewBag.UserName;
-                item.Status = "Pending";
+                item.Status = status.Pending.ToString();
             } 
             #endregion
 
@@ -57,11 +61,15 @@ namespace FirstProject.Controllers
             #endregion
 
             var UserInfo = _context.Logins.Where(x => x.Username == Username).FirstOrDefault(); 
+
             #region Reservation by Status and Hall Number
             var ReservationsWhenPending = (from Reservation in _context.Reservations
-                                           where Reservation.Status == "Pending" && Reservation.Hallnumber == id
+                                           where Reservation.Status == status.Pending.ToString() && Reservation.Hallnumber == id
                                            select Reservation).ToList();
             #endregion
+
+            var hallInfo = ReservationsWhenPending.FirstOrDefault(x => x.Username == Username);
+            var adminInfo = _context.Logins.Where(x => x.Roleid == 1).FirstOrDefault();
 
             #region Get visa and Reservation of User to Update Status and Pocket
             var UpdatePocket = 0;
@@ -69,48 +77,56 @@ namespace FirstProject.Controllers
             foreach (var Reservationcol in ReservationsWhenPending)
             {
                 price = (int)Reservationcol.Price;
-                Reservationcol.Username = ViewBag.UserName;
-                Reservationcol.Status = "Full";
+              
                 foreach (var Visacol in _context.Visas.Where(x => x.Username == Reservationcol.Username))
                 {
-                    UpdatePocket = Convert.ToInt32(Visacol.Pocket) - price;
-                    Visacol.Pocket = Convert.ToString(UpdatePocket);
+                    if (Convert.ToInt32(Visacol.Pocket) >= price)
+                    { 
+                        Reservationcol.Username = ViewBag.UserName;
+                        Reservationcol.Status = status.Full.ToString();
+                        UpdatePocket = Convert.ToInt32(Visacol.Pocket) - price;
+                        Visacol.Pocket = Convert.ToString(UpdatePocket);
+                        #region Sending Email To User
+                        var email = new MimeMessage();
+                        email.From.Add(MailboxAddress.Parse("mlkmsbh84@outlook.com"));
+                        email.To.Add(MailboxAddress.Parse(UserInfo.Email));
+
+
+
+                        email.Subject = "New Account :)";
+                        email.Body = new TextPart(TextFormat.Text)
+                        {
+                            Text = "Ms / Mrs " + UserInfo.Firstname + " " + UserInfo.Lastname
+                                                                 + " Your Reservation is Accepted \n"
+                                                                 + "In " + hallInfo.Place + " Have a fun for easily Services! \n"
+                                                                 + "With Price " + hallInfo.Price + " Hall Reservation\n"
+                                                                 + "All Respect Hall Reservation\n"
+                                                                 + "With all love " + adminInfo.Firstname + " " + adminInfo.Lastname
+
+                        };
+
+
+                        using (var smtp = new SmtpClient())
+                        {
+                            smtp.Connect("smtp.outlook.com", 587, SecureSocketOptions.StartTls);
+                            smtp.Authenticate("mlkmsbh84@outlook.com", "1234mlok1234");
+                            smtp.Send(email);
+                            smtp.Disconnect(true);
+                        }
+                        #endregion
+                    }
+                    else
+                    {
+                        Response.WriteAsync("<script>alert('There is No Money Enough!')");
+                    }
                 }
             }
-            var hallInfo = ReservationsWhenPending.FirstOrDefault(x => x.Username == Username);
-            var adminInfo = _context.Logins.Where(x => x.Roleid == 1).FirstOrDefault();
+           
             #endregion
 
             _context.SaveChanges();
 
-            #region Sending Email To User
-            var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse("mlkmsbh84@outlook.com"));
-            email.To.Add(MailboxAddress.Parse(UserInfo.Email));
-
-
-
-            email.Subject = "New Account :)";
-            email.Body = new TextPart(TextFormat.Text)
-            {
-                Text = "Ms / Mrs " + UserInfo.Firstname + " " + UserInfo.Lastname
-                                                     + " Your Reservation is Accepted \n"
-                                                     + "In "+ hallInfo.Place  +  " Have a fun for easily Services! \n"
-                                                     + "With Price " + hallInfo.Price + " Hall Reservation\n"
-                                                     + "All Respect Hall Reservation\n"
-                                                     + "With all love " + adminInfo.Firstname + " " + adminInfo.Lastname
-
-            };
-
-
-            using (var smtp = new SmtpClient())
-            {
-                smtp.Connect("smtp.outlook.com", 587, SecureSocketOptions.StartTls);
-                smtp.Authenticate("mlkmsbh84@outlook.com", "1234mlok1234");
-                smtp.Send(email);
-                smtp.Disconnect(true);
-            }
-            #endregion
+            
             return RedirectToAction("ReqRes", "Visas");
         }
         public IActionResult DisAgreement(decimal id)
@@ -124,7 +140,11 @@ namespace FirstProject.Controllers
             #region Reservation By Id
             var ReservationById = (from Reservation in _context.Reservations
                                    where Reservation.Hallnumber == id
-                                   select Reservation).ToList(); 
+                                   select Reservation).ToList();
+            #endregion
+
+            #region Admin Info
+            var AdminInfo = _context.Logins.Where(x => x.Roleid == 1).FirstOrDefault();
             #endregion
 
             #region Get visa and Reservation of User to Update Status and Pocket
@@ -135,12 +155,12 @@ namespace FirstProject.Controllers
             {
                 Price = (int)ReservationCol.Price;
 
-                ReservationCol.Status = "Available";
+                ReservationCol.Status = status.Available.ToString();
                 foreach (var VisaCol in _context.Visas.Where(col => col.Username == ReservationCol.Username))
                 {
                     UpdatePocket = Convert.ToInt32(VisaCol.Pocket) + Price;
                     VisaCol.Pocket = Convert.ToString(UpdatePocket);
-                    ReservationCol.Username = "mlklk-22";
+                    ReservationCol.Username = AdminInfo.Username;
                 }
 
             } 
@@ -163,28 +183,32 @@ namespace FirstProject.Controllers
                                    select Reservation).ToList();
             #endregion
 
+            #region Admin Info
+            var AdminInfo = _context.Logins.Where(x => x.Roleid == 1).FirstOrDefault();
+            #endregion
+
             #region Get visa and Reservation of User to Update Status and Pocket
             var UpdatePocket = 0;
             var price = 0;
             foreach (var item in ReservationById)
             {
                 price = (int)item.Price;
-                if (item.Status == "Pending")
+                if (item.Status == status.Pending.ToString())
                 {
-                    item.Status = "Available";
+                    item.Status = status.Available.ToString();
                     foreach (var item2 in _context.Visas.Where(x => x.Username == item.Username))
                     {
-                        item.Username = "mlklk-22";
+                        item.Username = AdminInfo.Username;
                     }
                 }
                 else
                 {
-                    item.Status = "Available";
+                    item.Status = status.Available.ToString();
                     foreach (var item2 in _context.Visas.Where(x => x.Username == item.Username))
                     {
                         UpdatePocket = Convert.ToInt32(item2.Pocket) + price;
                         item2.Pocket = Convert.ToString(UpdatePocket);
-                        item.Username = "mlklk-22";
+                        item.Username = AdminInfo.Username;
                     }
                 }
             } 
@@ -202,8 +226,12 @@ namespace FirstProject.Controllers
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
             #endregion
 
+            #region Admin Info
+            var AdminInfo = _context.Logins.Where(x => x.Roleid == 1).FirstOrDefault();
+            #endregion
+
             #region List Of Users
-            var Users = _context.Reservations.Where(x => x.Username != null && x.Username != "mlklk-22");
+            var Users = _context.Reservations.Where(x => x.Username != null && x.Username != AdminInfo.Username);
 
             #endregion           
 
@@ -229,6 +257,7 @@ namespace FirstProject.Controllers
             ViewBag.cardNum = HttpContext.Session.GetString("cardNum");
             ViewBag.UserName = HttpContext.Session.GetString("UserName"); 
             #endregion
+
             return View();
         }
         public IActionResult MyReservations()
@@ -240,8 +269,12 @@ namespace FirstProject.Controllers
             ViewBag.UserName = HttpContext.Session.GetString("UserName");
             #endregion
 
+            #region Admin Info
+            var AdminInfo = _context.Logins.Where(x => x.Roleid == 1).FirstOrDefault();
+            #endregion
+
             #region AllUsers
-            var Users = _context.Reservations.Where(x => x.Username != null && x.Username != "mlklk-22");
+            var Users = _context.Reservations.Where(x => x.Username != null && x.Username != AdminInfo.Username);
             #endregion
 
             return View(Users);              
