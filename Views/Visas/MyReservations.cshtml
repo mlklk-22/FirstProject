@@ -95,7 +95,19 @@
 
 <br /><br /><br /><br />
 <script>
-$(document).ready(function() { $('#example').DataTable({ dom: 'Bfrtip', buttons: ['pdfHtml5'] }); });
+    $(document).ready(function () {
+        $('#example').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                {
+                    extend: 'pdfHtml5',
+                    title: 'Booking Invoice'
+                    
+                }
+                
+            ]
+        });
+    });
 </script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 

@@ -41,7 +41,7 @@ namespace FirstProject.Controllers
 
             #region Sending Email To Admin
             var emaila = new MimeMessage();
-            emaila.From.Add(MailboxAddress.Parse("mlkmsbh84@outlook.com"));
+            emaila.From.Add(MailboxAddress.Parse("Raghadbadareen7300@gmail.com"));
             emaila.To.Add(MailboxAddress.Parse(adminInfo.Email));
 
 
@@ -56,7 +56,7 @@ namespace FirstProject.Controllers
             using (var smtp = new SmtpClient())
             {
                 smtp.Connect("smtp.outlook.com", 587, SecureSocketOptions.StartTls);
-                smtp.Authenticate("mlkmsbh84@outlook.com", "1234mlok1234");
+                smtp.Authenticate("Raghadbadareen7300@gmail.com", "RoRO1234");
                 smtp.Send(emaila);
                 smtp.Disconnect(true);
             }
@@ -64,7 +64,7 @@ namespace FirstProject.Controllers
 
             #region Sending Email To User
             var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse("mlkmsbh84@outlook.com"));
+            email.From.Add(MailboxAddress.Parse("Raghadbadareen7300@gmail.com"));
             email.To.Add(MailboxAddress.Parse(Email));
 
 
@@ -84,7 +84,7 @@ namespace FirstProject.Controllers
             using (var smtp = new SmtpClient())
             {
                 smtp.Connect("smtp.outlook.com", 587, SecureSocketOptions.StartTls);
-                smtp.Authenticate("mlkmsbh84@outlook.com", "1234mlok1234");
+                smtp.Authenticate("Raghadbadareen7300@gmail.com", "RoRO1234");
                 smtp.Send(email);
                 smtp.Disconnect(true);
             }
